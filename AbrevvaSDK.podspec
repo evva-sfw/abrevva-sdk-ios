@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AbrevvaSDK'
-  s.version          = '1.0.15'
+  s.version          = '1.0.16'
   s.summary          = 'Official EVVA Abrevva iOS SDK'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
