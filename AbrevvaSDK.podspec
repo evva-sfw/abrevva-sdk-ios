@@ -8,16 +8,17 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AbrevvaSDK'
-  s.version          = '1.0.18'
+  s.version          = '1.0.19'
   s.summary          = 'Official EVVA Abrevva iOS SDK'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA access components.
+It allows for scanning and connecting via BLE.
                        DESC
 
-  s.homepage         = 'https://bach1.evva.com/bitbucket/projects/XM/repos/abrevva-sdk-ios-pod'
+  s.homepage         = 'https://evva.com'
   s.license          = { :type => 'UNLICENSED', :file => 'LICENSE' }
   s.author           = 'EVVA Sicherheitstechnologie GmbH'
-  s.source           = { :git => 'https://bach1.evva.com/bitbucket/scm/xm/abrevva-sdk-ios-pod.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/evva-sfw/abrevva-sdk-ios-pod.git', :tag => s.version.to_s }
 
   s.platform = :ios
   s.ios.deployment_target = '15.0'
@@ -28,4 +29,3 @@ TODO: Add long description of the pod here.
 
   s.vendored_frameworks = 'AbrevvaSDK.framework'
 end
-
