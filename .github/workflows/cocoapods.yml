@@ -20,6 +20,7 @@ jobs:
           login $COCOAPODS_USER
           password $COCOAPODS_PASSWORD
         EOF
+        chmod 600 ~/.netrc
       name: 'Setup trunk auth'
       env:
         COCOAPODS_USER: ${{ vars.COCOAPODS_USER }}
