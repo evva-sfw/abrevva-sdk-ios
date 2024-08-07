@@ -18,9 +18,11 @@ jobs:
         cat <<EOF > ~/.netrc
         machine trunk.cocoapods.org
           login $COCOAPODS_USER
-          password CHANGEME
+          password $COCOAPODS_PASSWORD
         EOF
-        cat ~/.netrc
+      name: 'Setup trunk auth'
       env:
         COCOAPODS_USER: ${{ vars.COCOAPODS_USER }}
         COCOAPODS_PASSWORD: ${{ secrets.COCOAPODS_PASSWORD }}
+
+    - run: pod trunk push
