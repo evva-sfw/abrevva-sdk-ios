@@ -1,0 +1,26 @@
+name: Cocoapods
+on: workflow_dispatch
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: ruby/setup-ruby@v1.190.0
+      with:
+        ruby-version: '3.3' # Not needed with a `.ruby-version` or `.tool-versions`
+    - run: gem install cocoapods
+
+    - run: pod spec lint
+
+    - run: |
+        echo 'Writing .netrc file'
+        cat <<EOF > ~/.netrc
+        machine trunk.cocoapods.org
+          login $COCOAPODS_USER
+          password CHANGEME
+        EOF
+        cat ~/.netrc
+      env:
+        COCOAPODS_USER: ${{ vars.COCOAPODS_USER }}
+        COCOAPODS_PASSWORD: ${{ secrets.COCOAPODS_PASSWORD }}
