@@ -1,5 +1,9 @@
-name: Cocoapods
-on: workflow_dispatch
+name: Cocoapods Publish
+on:
+  push:
+    tags:
+      - '*'
+# Publish action triggers on new tags
 jobs:
   publish:
     runs-on: ubuntu-latest
