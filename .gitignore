@@ -1,0 +1,6 @@
+# Swift Package Manager
+.netrc
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+/Packages
+/.build

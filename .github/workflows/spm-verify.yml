@@ -1,0 +1,13 @@
+name: Swift Package Manager Verify
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+jobs:
+  verify:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Verify
+      run: swift package dump-package
