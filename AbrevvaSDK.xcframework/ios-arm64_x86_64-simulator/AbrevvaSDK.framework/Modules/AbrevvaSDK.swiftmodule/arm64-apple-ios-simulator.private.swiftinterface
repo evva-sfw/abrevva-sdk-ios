@@ -1,11 +1,9 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
 // swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature AccessLevelOnImport -enable-bare-slash-regex -module-name AbrevvaSDK
-import CocoaMQTT
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import CoreBluetooth
-import CoreNFC
 import CryptoKit
-import CryptoSwift
 import Foundation
 import Security
 import Swift
@@ -45,27 +43,6 @@ public enum DisengageStatusType : Swift.String {
   @objc override dynamic public init()
   @objc deinit
 }
-public protocol NFCSessionDelegate : AnyObject {
-  func sessionDidStart(_ withSuccess: Swift.Bool)
-  func sessionDidClose(_ withError: (any Swift.Error)?)
-  func sessionDidReceiveKeyOnEvent(_ tagID: Foundation.Data, _ historicalBytes: Foundation.Data)
-  func sessionDidReceiveKeyOffEvent(_ tagID: Foundation.Data, _ historicalBytes: Foundation.Data)
-}
-@objc @_inheritsConvenienceInitializers public class NFCSession : ObjectiveC.NSObject, CoreNFC.NFCTagReaderSessionDelegate {
-  public var delegate: (any AbrevvaSDK.NFCSessionDelegate)?
-  @objc override dynamic public init()
-  public func setTagReaderSession(newReaderSession: any CoreNFC.NFCReaderSessionProtocol)
-  public func setNfcTag(newTag: CoreNFC.NFCTag, composite: Any?)
-  public func beginSession(message: Swift.String? = nil, timeout: Swift.Int? = nil)
-  public func invalidateSession(message: Swift.String? = nil)
-  #if compiler(>=5.3) && $AsyncAwait
-  public func send(apdu: CoreNFC.NFCISO7816APDU) async -> (Foundation.Data, Swift.UInt8, Swift.UInt8)?
-  #endif
-  public func tagReaderSessionDidBecomeActive(_: CoreNFC.NFCTagReaderSession)
-  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: any Swift.Error)
-  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
   public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
   @objc override dynamic public init()
@@ -83,18 +60,10 @@ public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.Strin
   public func getAddress() -> Swift.String
   public func getPeripheral() -> CoreBluetooth.CBPeripheral
   public func isConnected() -> Swift.Bool
-  #if compiler(>=5.3) && $AsyncAwait
   public func discoverServices(_ timeout: Swift.Int? = nil) async -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   public func read(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ timeout: Swift.Int? = nil) async -> Foundation.Data?
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   public func write(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ data: Foundation.Data, _ writeType: CoreBluetooth.CBCharacteristicWriteType, _ timeout: Swift.Int? = nil) async -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   public func setNotifications(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ enable: Swift.Bool, _ notifyCallback: AbrevvaSDK.BleDevice.NotifyCallback?, _ timeout: Swift.Int? = nil) async -> Swift.Bool
-  #endif
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error _: (any Swift.Error)?)
   @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didDiscoverDescriptorsFor characteristic: CoreBluetooth.CBCharacteristic, error _: (any Swift.Error)?)
@@ -115,19 +84,11 @@ public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.Strin
   public func isBleEnabled() -> Swift.Bool
   public func startScan(_ name: Swift.String?, _ namePrefix: Swift.String?, _ allowDuplicates: Swift.Bool, _ onScanStarted: @escaping (_ success: Swift.Bool) -> Swift.Void, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback, _ onDeviceConnect: AbrevvaSDK.BleManager.ConnectCallback? = nil, _ onDeviceDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil, _ timeout: Swift.Int? = nil)
   public func stopScan()
-  #if compiler(>=5.3) && $AsyncAwait
   public func connect(_ device: AbrevvaSDK.BleDevice, _ timeout: Swift.Int? = nil) async -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   @discardableResult
   public func disconnect(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   public func signalize(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mobileAccessData: Swift.String, _ isPermanentRelease: Swift.Bool, _: Swift.Int? = nil) async -> AbrevvaSDK.DisengageStatusType
-  #endif
   public func registerStateReceiver(_ stateReceiver: @escaping AbrevvaSDK.BleManager.StateReceiverCallback)
   public func unregisterStateReceiver()
   public func emitState(enabled: Swift.Bool)
@@ -147,45 +108,10 @@ public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.Strin
   @objc override dynamic public init()
   @objc deinit
 }
-public class Message : Swift.Codable {
-  public init(t: Swift.String, e: Swift.String, oid: Swift.String, atr: Swift.String?)
-  @objc deinit
-  public func encode(to encoder: any Swift.Encoder) throws
-  required public init(from decoder: any Swift.Decoder) throws
-}
 @objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
   public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
   public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
   @objc override dynamic public init()
-  @objc deinit
-}
-public class MQTT5Client : CocoaMQTT.CocoaMQTT5Delegate {
-  public init(clientID: Swift.String, host: Swift.String, port: Swift.UInt16, clientCertArray: CoreFoundation.CFArray?)
-  public func connect()
-  public func disconnect()
-  public func subscribe(topics: [CocoaMQTT.MqttSubscription])
-  public func setOnMessageRecieveHandler(handler: @escaping (CocoaMQTT.CocoaMQTT5Message) -> Swift.Void)
-  public func setDidStateChangeToHandler(handler: @escaping (CocoaMQTT.CocoaMQTTConnState) -> Swift.Void)
-  public func getClientID() -> Swift.String
-  public func publishKyOn(identifier: Swift.String, historicalBytes: Swift.String)
-  public func publishKyOff(identifier: Swift.String, historicalBytes: Swift.String)
-  public func publishMessage(topic: Swift.String, payload: [Swift.UInt8]?)
-  public func publishMessage(topic: Swift.String, message: AbrevvaSDK.Message?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didStateChangeTo state: CocoaMQTT.CocoaMQTTConnState)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didReceiveMessage message: CocoaMQTT.CocoaMQTT5Message, id _: Swift.UInt16, publishData _: CocoaMQTT.MqttDecodePublish?)
-  @objc public func mqtt5DidPing(_: CocoaMQTT.CocoaMQTT5)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didPublishMessage message: CocoaMQTT.CocoaMQTT5Message, id _: Swift.UInt16)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didPublishAck _: Swift.UInt16, pubAckData: CocoaMQTT.MqttDecodePubAck?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didPublishRec _: Swift.UInt16, pubRecData: CocoaMQTT.MqttDecodePubRec?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didPublishComplete _: Swift.UInt16, pubCompData: CocoaMQTT.MqttDecodePubComp?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didSubscribeTopics _: Foundation.NSDictionary, failed _: [Swift.String], subAckData: CocoaMQTT.MqttDecodeSubAck?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didUnsubscribeTopics _: [Swift.String], unsubAckData: CocoaMQTT.MqttDecodeUnsubAck?)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didReceiveDisconnectReasonCode reasonCode: CocoaMQTT.CocoaMQTTDISCONNECTReasonCode)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didReceiveAuthReasonCode reasonCode: CocoaMQTT.CocoaMQTTAUTHReasonCode)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didReceive _: Security.SecTrust, completionHandler: @escaping (Swift.Bool) -> Swift.Void)
-  @objc public func mqtt5(_: CocoaMQTT.CocoaMQTT5, didConnectAck _: CocoaMQTT.CocoaMQTTCONNACKReasonCode, connAckData _: CocoaMQTT.MqttDecodeConnAck?)
-  @objc public func mqtt5DidReceivePong(_: CocoaMQTT.CocoaMQTT5)
-  @objc public func mqtt5DidDisconnect(_: CocoaMQTT.CocoaMQTT5, withError _: (any Swift.Error)?)
   @objc deinit
 }
 extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
