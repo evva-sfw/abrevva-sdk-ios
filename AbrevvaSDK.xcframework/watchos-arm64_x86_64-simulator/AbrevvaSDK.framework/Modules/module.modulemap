@@ -1,0 +1,4 @@
+framework module AbrevvaSDK {
+  header "AbrevvaSDK-Swift.h"
+  requires objc
+}

@@ -1,0 +1,119 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target x86_64-apple-watchos11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature AccessLevelOnImport -enable-bare-slash-regex -module-name AbrevvaSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import CoreBluetooth
+import CryptoKit
+import Foundation
+import Security
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
+  public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum DisengageStatusType : Swift.String {
+  case ERROR
+  case AUTHORIZED
+  case AUTHORIZED_PERMANENT_ENGAGE
+  case AUTHORIZED_PERMANENT_DISENGAGE
+  case AUTHORIZED_BATTERY_LOW
+  case AUTHORIZED_OFFLINE
+  case UNAUTHORIZED
+  case UNAUTHORIZED_OFFLINE
+  case SIGNAL_LOCALIZATION
+  case MEDIUM_DEFECT_ONLINE
+  case MEDIUM_BLACKLISTED
+  case UNKNOWN_STATUS_CODE
+  case UNABLE_TO_CONNECT
+  case TIMEOUT
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class AesGcm : ObjectiveC.NSObject {
+  public func decryptFile(key: [Swift.UInt8], data: Foundation.Data, pathPt: Swift.String) -> Swift.Bool
+  public func encryptFile(key: [Swift.UInt8], pathPt: Swift.String, pathCt: Swift.String) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
+  public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+public func descriptorValueToString(_ value: Any) -> Swift.String
+public func dataToString(_ data: Foundation.Data) -> Swift.String
+public func stringToData(_ dataString: Swift.String) -> Foundation.Data
+public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+@objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
+  public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
+  public init(_ peripheral: CoreBluetooth.CBPeripheral)
+  public func getName() -> Swift.String?
+  public func getAddress() -> Swift.String
+  public func getPeripheral() -> CoreBluetooth.CBPeripheral
+  public func isConnected() -> Swift.Bool
+  public func discoverServices(_ timeout: Swift.Int? = nil) async -> Swift.Bool
+  public func read(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ timeout: Swift.Int? = nil) async -> Foundation.Data?
+  public func write(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ data: Foundation.Data, _ writeType: CoreBluetooth.CBCharacteristicWriteType, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  public func setNotifications(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ enable: Swift.Bool, _ notifyCallback: AbrevvaSDK.BleDevice.NotifyCallback?, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error _: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didDiscoverDescriptorsFor characteristic: CoreBluetooth.CBCharacteristic, error _: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didWriteValueFor _: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc deinit
+}
+@objc public class BleManager : ObjectiveC.NSObject, CoreBluetooth.CBCentralManagerDelegate {
+  public typealias InitCallback = (_ success: Swift.Bool, _ message: Swift.String?) -> Swift.Void
+  public typealias StateReceiverCallback = (_ enabled: Swift.Bool) -> Swift.Void
+  public typealias ScanResultCallback = (_ device: AbrevvaSDK.BleDevice, _ advertisementData: [Swift.String : Any], _ rssi: Foundation.NSNumber) -> Swift.Void
+  public typealias ConnectCallback = (_ address: Swift.String) -> Swift.Void
+  public typealias DisconnectCallback = (_ address: Swift.String) -> Swift.Void
+  public init(_ onInit: AbrevvaSDK.BleManager.InitCallback? = nil)
+  public func getDevice(_ deviceID: Swift.String) -> AbrevvaSDK.BleDevice?
+  public func setCentralManager(_ centralManager: CoreBluetooth.CBCentralManager)
+  public func isBleEnabled() -> Swift.Bool
+  public func startScan(_ name: Swift.String?, _ namePrefix: Swift.String?, _ allowDuplicates: Swift.Bool, _ onScanStarted: @escaping (_ success: Swift.Bool) -> Swift.Void, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback, _ onDeviceConnect: AbrevvaSDK.BleManager.ConnectCallback? = nil, _ onDeviceDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil, _ timeout: Swift.Int? = nil)
+  public func stopScan()
+  public func connect(_ device: AbrevvaSDK.BleDevice, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  @discardableResult
+  public func disconnect(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
+  public func signalize(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
+  public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mobileAccessData: Swift.String, _ isPermanentRelease: Swift.Bool, _: Swift.Int? = nil) async -> AbrevvaSDK.DisengageStatusType
+  public func registerStateReceiver(_ stateReceiver: @escaping AbrevvaSDK.BleManager.StateReceiverCallback)
+  public func unregisterStateReceiver()
+  public func emitState(enabled: Swift.Bool)
+  @objc public func centralManager(_: CoreBluetooth.CBCentralManager, didConnect peripheral: CoreBluetooth.CBPeripheral)
+  @objc public func centralManager(_: CoreBluetooth.CBCentralManager, didFailToConnect peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  @objc public func centralManager(_: CoreBluetooth.CBCentralManager, didDisconnectPeripheral peripheral: CoreBluetooth.CBPeripheral, error: (any Swift.Error)?)
+  @objc public func centralManager(_: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+  @objc public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class X25519 : ObjectiveC.NSObject {
+  public func generateKeyPair() -> [Foundation.Data]
+  public func computeSharedSecret(privateKeyData: Foundation.Data, publicKeyData: Foundation.Data) -> Foundation.Data?
+  public func computeED25519PublicKey(privateKeyData: Foundation.Data) -> Foundation.Data?
+  public func sign(privateKeyData: Foundation.Data, data: Foundation.Data) -> Foundation.Data?
+  public func verify(publicKeyData: Foundation.Data, data: Foundation.Data, signature: Foundation.Data) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
+  public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
+extension AbrevvaSDK.DisengageStatusType : Swift.Hashable {}
+extension AbrevvaSDK.DisengageStatusType : Swift.RawRepresentable {}
