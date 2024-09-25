@@ -35,10 +35,9 @@ The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA
 
 ### Cocoapods
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate EVVA Abrevva iOS SDK into your Xcode project using CocoaPods, specify the source repo and pod in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate EVVA Abrevva iOS SDK into your Xcode project using CocoaPods, specify the pod in your `Podfile`:
 
 ```ruby
-source 'https://github.com/evva-sfw/abrevva-sdk-ios-pod-specs.git'
 pod 'AbrevvaSDK'
 ```
 
