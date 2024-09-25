@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AbrevvaSDK'
-  s.version          = '1.0.29'
+  s.version          = '1.0.30'
   s.summary          = 'Official EVVA Abrevva iOS SDK'
   s.description      = <<-DESC
 The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA access components.
@@ -20,11 +20,11 @@ It allows for scanning and connecting via BLE.
   s.author           = 'EVVA Sicherheitstechnologie GmbH'
   s.source           = { :git => 'https://github.com/evva-sfw/abrevva-sdk-ios.git', :tag => s.version.to_s }
 
-  s.platform = :ios
   s.ios.deployment_target = '15.0'
+  s.watchos.deployment_target = '11.0'
   s.swift_version = '5.0'
 
-  s.dependency 'CocoaMQTT'
+  s.ios.dependency 'CocoaMQTT'
   s.dependency 'CryptoSwift'
 
   s.vendored_frameworks = 'AbrevvaSDK.xcframework'
