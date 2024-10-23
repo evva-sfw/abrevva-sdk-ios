@@ -18,43 +18,43 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.abi.json</key>
 		<data>
-		XXMZY7J0vNZCAI9i2toZ11mlQKg=
+		z0tvT3RZDYRLWFXcC7VEZGOLltU=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		TC2UlzkybBXFVX48X+M1exzVybM=
+		MSadc4NMGpKNQE9/SpKO6uUGQzY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<data>
-		q2WDeu9HWO5cyGsH/mkw4QSGGKM=
+		Hd9xtkYdoOfu97um6aV3uABoWqY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		TC2UlzkybBXFVX48X+M1exzVybM=
+		MSadc4NMGpKNQE9/SpKO6uUGQzY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		2BuT94mmMiSPesqw0hd593pj+Rg=
+		+VHLrRUVHHnYvQRgAvrpqoEhZqw=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
 		<data>
-		XXMZY7J0vNZCAI9i2toZ11mlQKg=
+		z0tvT3RZDYRLWFXcC7VEZGOLltU=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		SiZVRxPt+hgEtCvAllCry/+rIPI=
+		4+YqDKzwxIfE9hOOURRePhyegeg=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<data>
-		2xHavt3OoWOnBL9l+r291p/Y45g=
+		BdgMFdnjt1Jb9FMb5BdhcqlWCRw=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		SiZVRxPt+hgEtCvAllCry/+rIPI=
+		4+YqDKzwxIfE9hOOURRePhyegeg=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		hFk2J+xggphq8o+53+llxb6bnjw=
+		cfUePfzMKMCDxugqej/+pZ9rirw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -81,70 +81,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hOGWvI4/BfDO/FaExBoxDiEib01ZPSNv1gnKu/U4i0M=
+			9qU5F06/KaoU9cipYfOAGTdpIe9t40AMiFC0nrRoimo=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PKYeocMX72p5y1GCoztEqyq5aQ2MM/QncBwB9NokjPo=
+			HPmbKwcrydVKyXO3iypyNfNyGm8ef2dOrKS5rOtsaFM=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			otXHi7jXpcWLGss/ZMbl/XEORex55Xf7ol3rlNTBRQ8=
+			R3dDom1InDGuujvblNcPfHRzwUG9+vTh3y0W8NZm3jY=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PKYeocMX72p5y1GCoztEqyq5aQ2MM/QncBwB9NokjPo=
+			HPmbKwcrydVKyXO3iypyNfNyGm8ef2dOrKS5rOtsaFM=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Aqo6cBZ8yZlM8W1izhvavdMphA4Yu3aucww6SStPMhU=
+			A+aMJUDFWPB/iexZeF66OqHohBIAV3IZmvnYMmx8izo=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hOGWvI4/BfDO/FaExBoxDiEib01ZPSNv1gnKu/U4i0M=
+			9qU5F06/KaoU9cipYfOAGTdpIe9t40AMiFC0nrRoimo=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdsUnprWLc+bTHhEgDSWbZJ/dxV07EwAPiEB1FVgFR0=
+			TM2sdUSA5f/TswvSzAKHvUC/92bck9cRwQ0ogS73A8U=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C3OVWDBoFRGi4YUlEgyIXKThbPA61DQyRBmrlt9GGIA=
+			6h9lG39HnKh9/N8PA4SgL83is0KM1UDCb5c9RiOiE3s=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdsUnprWLc+bTHhEgDSWbZJ/dxV07EwAPiEB1FVgFR0=
+			TM2sdUSA5f/TswvSzAKHvUC/92bck9cRwQ0ogS73A8U=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7owXvc9XS/z+ag6qYAdIPd8DI9MG0vq4uXtgFvUdL0Y=
+			SJ+R9z5zlgCAZWfW33Lm2BJcm27Gf6ZAmqFLPFodpTM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

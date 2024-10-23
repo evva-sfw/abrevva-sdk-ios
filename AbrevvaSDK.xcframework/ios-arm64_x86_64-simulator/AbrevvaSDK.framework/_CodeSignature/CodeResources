@@ -18,43 +18,43 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		XXMZY7J0vNZCAI9i2toZ11mlQKg=
+		z0tvT3RZDYRLWFXcC7VEZGOLltU=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		skcQQWwckn5Chg3bbHoB5ReuqPE=
+		8EqWz0Je4vNrOt1rPVJBb+3Ib90=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		2DVjTdsB9+ikgZWtdmYlDe0+w0A=
+		MAuwKS70w6E8xhmC2WstcJjIXjM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		skcQQWwckn5Chg3bbHoB5ReuqPE=
+		8EqWz0Je4vNrOt1rPVJBb+3Ib90=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3fMqRHIXHsGzKpnIsle1+IZTURA=
+		wPTH/0iMEO4vukgO+41AtrnvpS8=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		XXMZY7J0vNZCAI9i2toZ11mlQKg=
+		z0tvT3RZDYRLWFXcC7VEZGOLltU=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		1j9h1R2wav0T63VJg9NRBXWukfk=
+		WaLCMoPxzgS1z/f6pLEMC/ax/vk=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		DT6/s3v/K6GUHtrkRHSQ03rClRg=
+		y84ZIB6/1fGnrCxbbKksJi+iI2k=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		1j9h1R2wav0T63VJg9NRBXWukfk=
+		WaLCMoPxzgS1z/f6pLEMC/ax/vk=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Zm8Rpbwa1hteGmK+R3G+VnI9Xhs=
+		sxwPfWDPo01/m1JoQXSYTYSz138=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -81,70 +81,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hOGWvI4/BfDO/FaExBoxDiEib01ZPSNv1gnKu/U4i0M=
+			9qU5F06/KaoU9cipYfOAGTdpIe9t40AMiFC0nrRoimo=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I0qT7glqCslOtTV8fegYxverL+bLF4WWUwcilVG7dEY=
+			n1KAip+kU+P3qfo1j9eP1CuGU+Dm19/uEvIlEz9JcQw=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2S96KSBC32kAPSwfpbngfEdXPz7uvCx6JbD2gBt4/7w=
+			qt7rYGeiHPDN7N8thqNY2bb/jGpfRZFqcTTsNaPZLs0=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I0qT7glqCslOtTV8fegYxverL+bLF4WWUwcilVG7dEY=
+			n1KAip+kU+P3qfo1j9eP1CuGU+Dm19/uEvIlEz9JcQw=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ezdzSSjvj9zDrD5Bq20Ao0bBTmwnb5ahNK6xnZbuvjk=
+			x7qfqS8CEepnRNDslR3xvS7Tr0dufdvXo4SM8raf2vQ=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hOGWvI4/BfDO/FaExBoxDiEib01ZPSNv1gnKu/U4i0M=
+			9qU5F06/KaoU9cipYfOAGTdpIe9t40AMiFC0nrRoimo=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1upB+tJxxljBu91lGloNcE6FyYCRAOwR32/1HV3Vt6g=
+			dZMp65l+v6Y0fNGN/+9qJ3b1ZkBSTWdghXE8gCZJEBg=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			P1IAIK2Bn2GIBem5jN48x6QxO9BsXny7KzW49Fx9MSI=
+			RX2Jh1ImotCBwJt+etUXt+6bwHX/JfePOxtGnwhmc4c=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1upB+tJxxljBu91lGloNcE6FyYCRAOwR32/1HV3Vt6g=
+			dZMp65l+v6Y0fNGN/+9qJ3b1ZkBSTWdghXE8gCZJEBg=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			akrumGzWS+rqymWDuV/zFA7xHP1QdhwvRuqjfgIEH7E=
+			C17jpBv928BUtbKpnTGtX/UsEzxSBotxX3ll/mejU3g=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

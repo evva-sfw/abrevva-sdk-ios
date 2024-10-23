@@ -55,7 +55,8 @@ public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 @objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
   public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
-  public init(_ peripheral: CoreBluetooth.CBPeripheral)
+  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil)
+  public func getMacAddress() -> Swift.String?
   public func getName() -> Swift.String?
   public func getAddress() -> Swift.String
   public func getPeripheral() -> CoreBluetooth.CBPeripheral
