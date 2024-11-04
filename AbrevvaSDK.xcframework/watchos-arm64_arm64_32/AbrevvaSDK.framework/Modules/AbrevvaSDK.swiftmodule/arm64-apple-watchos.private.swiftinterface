@@ -53,10 +53,33 @@ public func dataToString(_ data: Foundation.Data) -> Swift.String
 public func stringToData(_ dataString: Swift.String) -> Foundation.Data
 public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+public struct ManufacturerData : Swift.Equatable {
+  public let companyIdentifier: Swift.UInt16
+  public let version: Swift.UInt8
+  public let componentType: Swift.UInt8
+  public let mainFirmwareVersionMajor: Swift.UInt8
+  public let mainFirmwareVersionMinor: Swift.UInt8
+  public let mainFirmwareVersionPatch: Swift.UInt16
+  public let componentHAL: Swift.Int
+  public let batteryStatus: Swift.Int
+  public let mainConstructionMode: Swift.Int
+  public let subConstructionMode: Swift.Int
+  public let isOnline: Swift.Int
+  public let officeModeEnabled: Swift.Int
+  public let twoFactorRequired: Swift.Int
+  public let officeModeActive: Swift.Int
+  public let reservedBits: Swift.Int?
+  public let identifier: Swift.String
+  public let subFirmwareVersionMajor: Swift.UInt8?
+  public let subFirmwareVersionMinor: Swift.UInt8?
+  public let subFirmwareVersionPatch: Swift.UInt16?
+  public let subComponentIdentifier: Swift.String?
+  public static func == (a: AbrevvaSDK.ManufacturerData, b: AbrevvaSDK.ManufacturerData) -> Swift.Bool
+}
 @objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
   public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
   public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil)
-  public func getMacAddress() -> Swift.String?
+  public func getManufacturerData() throws -> AbrevvaSDK.ManufacturerData
   public func getName() -> Swift.String?
   public func getAddress() -> Swift.String
   public func getPeripheral() -> CoreBluetooth.CBPeripheral
@@ -115,6 +138,22 @@ public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.Strin
   @objc override dynamic public init()
   @objc deinit
 }
+extension Swift.UInt16 {
+  public enum UInt16Error : Swift.Error {
+    case IndexOutOfBounds
+    case bitRangeStartCantBeBiggerThanEnd
+    public static func == (a: Swift.UInt16.UInt16Error, b: Swift.UInt16.UInt16Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public func bit(_ index: Swift.Int) throws -> Swift.Int
+  public func bitRange(_ indexStart: Swift.Int, _ indexEnd: Swift.Int) throws -> Swift.Int
+  public static func combine(_ byte1: Swift.UInt8?, _ byte2: Swift.UInt8?) -> Swift.UInt16
+}
 extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.Hashable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.RawRepresentable {}
+extension Swift.UInt16.UInt16Error : Swift.Equatable {}
+extension Swift.UInt16.UInt16Error : Swift.Hashable {}
