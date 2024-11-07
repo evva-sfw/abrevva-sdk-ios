@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AbrevvaSDK'
-  s.version          = '1.0.33'
+  s.version          = '1.1.0'
   s.summary          = 'Official EVVA Abrevva iOS SDK'
   s.description      = <<-DESC
 The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA access components.

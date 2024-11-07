@@ -99,6 +99,8 @@ public struct ManufacturerData : Swift.Equatable {
 @objc public class BleManager : ObjectiveC.NSObject, CoreBluetooth.CBCentralManagerDelegate {
   public typealias InitCallback = (_ success: Swift.Bool, _ message: Swift.String?) -> Swift.Void
   public typealias StateReceiverCallback = (_ enabled: Swift.Bool) -> Swift.Void
+  public typealias ScanStartCallback = (_ error: (any Swift.Error)?) -> Swift.Void
+  public typealias ScanStopCallback = (_ error: (any Swift.Error)?) -> Swift.Void
   public typealias ScanResultCallback = (_ device: AbrevvaSDK.BleDevice, _ advertisementData: [Swift.String : Any], _ rssi: Foundation.NSNumber) -> Swift.Void
   public typealias ConnectCallback = (_ address: Swift.String) -> Swift.Void
   public typealias DisconnectCallback = (_ address: Swift.String) -> Swift.Void
@@ -106,9 +108,11 @@ public struct ManufacturerData : Swift.Equatable {
   public func getDevice(_ deviceID: Swift.String) -> AbrevvaSDK.BleDevice?
   public func setCentralManager(_ centralManager: CoreBluetooth.CBCentralManager)
   public func isBleEnabled() -> Swift.Bool
+  @available(*, deprecated, message: "Use startScan with mac signature instead.")
   public func startScan(_ name: Swift.String?, _ namePrefix: Swift.String?, _ allowDuplicates: Swift.Bool, _ onScanStarted: @escaping (_ success: Swift.Bool) -> Swift.Void, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback, _ onDeviceConnect: AbrevvaSDK.BleManager.ConnectCallback? = nil, _ onDeviceDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil, _ timeout: Swift.Int? = nil)
+  public func startScan(_ mac: Swift.String?, _ timeout: Swift.Int? = nil, _ allowDuplicates: Swift.Bool = false, _ onScanStart: @escaping AbrevvaSDK.BleManager.ScanStartCallback, _ onScanStop: @escaping AbrevvaSDK.BleManager.ScanStopCallback, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback)
   public func stopScan()
-  public func connect(_ device: AbrevvaSDK.BleDevice, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  public func connect(_ device: AbrevvaSDK.BleDevice, _ timeout: Swift.Int? = nil, _ onDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil) async -> Swift.Bool
   @discardableResult
   public func disconnect(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
   public func signalize(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
