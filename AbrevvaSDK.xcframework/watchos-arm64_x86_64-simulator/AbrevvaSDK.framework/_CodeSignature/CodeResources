@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AbrevvaSDK-Swift.h</key>
 		<data>
-		OnI2hrCJsxGSP0HEOcVXFKu2GJs=
+		vwf5/+kRi9ccQxsJ7umqZrdcJoQ=
 		</data>
 		<key>Headers/abrevva_sdk_ios.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		NWvaE/Jz8a1p7hRlca+0s3Z62b0=
+		NoChSGx2KLHKuk3AVMfYGkRE94A=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.abi.json</key>
 		<data>
@@ -22,19 +22,19 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		pUaGs39UHuaPr5FDDg4oRfE6MP0=
+		109Iq+OdcFeeoO4YlkjkMpIsExI=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<data>
-		iW7gnYj7pNNmKA+R4Ahwp+EsN2E=
+		6f173JWN8Zb9YuZR0M78nqNmrgQ=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		pUaGs39UHuaPr5FDDg4oRfE6MP0=
+		109Iq+OdcFeeoO4YlkjkMpIsExI=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		YD5X/S3lGqs0xNAZZU9+vGpPp/8=
+		mcc/xQ3ztyXIN0ZjSuScNHWFBQM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
 		<data>
@@ -42,19 +42,19 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		CCpcHpg8rit6y+7UjGQVlG0zByY=
+		A1n2PCfGImpJLON/b5nJTEa3GIk=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<data>
-		uhEuVbS7THFK9nQT28ca/ydYOqc=
+		YnEV+ULhyjFodpJ04ymLyzWIqpw=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		CCpcHpg8rit6y+7UjGQVlG0zByY=
+		A1n2PCfGImpJLON/b5nJTEa3GIk=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		jtTSYR01heET0ZipRZVkd2vIOxs=
+		JC8c6CNmzHN+n911MUARkcTWb9Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rnvK0m0HdA+RwA8DR8N4wR+wbeokS26h+l/yEp3/Wz8=
+			QGvYkqisXrNFbIq4PxzuDUP8v8TcLQz5EkQalorgCEA=
 			</data>
 		</dict>
 		<key>Headers/abrevva_sdk_ios.h</key>
@@ -88,28 +88,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i3JiYYAwOkO07jYTVyKfR2VUllXaSyMnQsSj5u0fEQc=
+			mqNAZgv1b3ozJGMvc47sZq4iENU7XJov+m0OkhjFaXE=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			g4AXYCuJ39xSOs45dTISY/1XV640PM02gr0uBjQHuy8=
+			Z0wNYya4KvnMoyL67JExBwrZ5EOnxNamlVMI2YHObVI=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			i3JiYYAwOkO07jYTVyKfR2VUllXaSyMnQsSj5u0fEQc=
+			mqNAZgv1b3ozJGMvc47sZq4iENU7XJov+m0OkhjFaXE=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dHXe77dirpNpe5PlwGUJtiyb7j80co2rcviT0xd8z3E=
+			P8oTrQDPxraxa1too+DbcrdAcpUykRY+m++HZKqOHj4=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
@@ -123,28 +123,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FwpiIWeLjR0NoJBdI0ZZMDlhaZnaSwf4GwpmgXmDbG4=
+			NsgmEa4G4gZbVWmtxAHyOkl6tiu4coEztOsZCR9vGFs=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nQjAnoNeqdXT1OiUP2Xd8q96W9f7S3mPWe+rXYKSnOk=
+			o/5l+GTRiwJKUcmYQh9UmnIvRZhIvnxJ33dE4vv4mJg=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FwpiIWeLjR0NoJBdI0ZZMDlhaZnaSwf4GwpmgXmDbG4=
+			NsgmEa4G4gZbVWmtxAHyOkl6tiu4coEztOsZCR9vGFs=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HpQZKzho/v35voMOmD/tZpJnFXT0cOMu4gP3BhDg+A0=
+			WfRLlU3LHqdhFg7hTqN1kOQSHDVkQacB9KnPYJ8+GdE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
