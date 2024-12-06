@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
-// swift-module-flags: -target arm64_32-apple-watchos10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature AccessLevelOnImport -enable-bare-slash-regex -module-name AbrevvaSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-module-flags: -target arm64_32-apple-watchos10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name AbrevvaSDK
 import CoreBluetooth
 import CryptoKit
 import Foundation
@@ -11,75 +10,18 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-@objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
-  public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
-}
-public enum DisengageStatusType : Swift.String {
-  case ERROR
-  case AUTHORIZED
-  case AUTHORIZED_PERMANENT_ENGAGE
-  case AUTHORIZED_PERMANENT_DISENGAGE
-  case AUTHORIZED_BATTERY_LOW
-  case AUTHORIZED_OFFLINE
-  case UNAUTHORIZED
-  case UNAUTHORIZED_OFFLINE
-  case SIGNAL_LOCALIZATION
-  case MEDIUM_DEFECT_ONLINE
-  case MEDIUM_BLACKLISTED
-  case UNKNOWN_STATUS_CODE
-  case UNABLE_TO_CONNECT
-  case TIMEOUT
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-@objc @_inheritsConvenienceInitializers public class AesGcm : ObjectiveC.NSObject {
-  public func decryptFile(key: [Swift.UInt8], data: Foundation.Data, pathPt: Swift.String) -> Swift.Bool
-  public func encryptFile(key: [Swift.UInt8], pathPt: Swift.String, pathCt: Swift.String) -> Swift.Bool
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
-  public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
-}
-public func descriptorValueToString(_ value: Any) -> Swift.String
-public func dataToString(_ data: Foundation.Data) -> Swift.String
-public func stringToData(_ dataString: Swift.String) -> Foundation.Data
-public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-public struct ManufacturerData : Swift.Equatable {
-  public let companyIdentifier: Swift.UInt16
-  public let version: Swift.UInt8
-  public let componentType: Swift.UInt8
-  public let mainFirmwareVersionMajor: Swift.UInt8
-  public let mainFirmwareVersionMinor: Swift.UInt8
-  public let mainFirmwareVersionPatch: Swift.UInt16
-  public let componentHAL: Swift.Int
-  public let batteryStatus: Swift.Int
-  public let mainConstructionMode: Swift.Int
-  public let subConstructionMode: Swift.Int
-  public let isOnline: Swift.Int
-  public let officeModeEnabled: Swift.Int
-  public let twoFactorRequired: Swift.Int
-  public let officeModeActive: Swift.Int
-  public let reservedBits: Swift.Int?
-  public let identifier: Swift.String
-  public let subFirmwareVersionMajor: Swift.UInt8?
-  public let subFirmwareVersionMinor: Swift.UInt8?
-  public let subFirmwareVersionPatch: Swift.UInt16?
-  public let subComponentIdentifier: Swift.String?
-  public static func == (a: AbrevvaSDK.ManufacturerData, b: AbrevvaSDK.ManufacturerData) -> Swift.Bool
-}
 @objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
   public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
-  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil)
-  public func getManufacturerData() throws -> AbrevvaSDK.ManufacturerData
+  public var address: Swift.String {
+    get
+  }
+  public var localName: Swift.String? {
+    get
+  }
+  public var advertisementData: AbrevvaSDK.BleDeviceAdvertisementData? {
+    get
+  }
+  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil, rssi: Swift.Int)
   public func getName() -> Swift.String?
   public func getAddress() -> Swift.String
   public func getPeripheral() -> CoreBluetooth.CBPeripheral
@@ -127,6 +69,71 @@ public struct ManufacturerData : Swift.Equatable {
   @objc public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
   @objc deinit
 }
+public struct BleDeviceManufacturerData : Swift.Equatable {
+  public let companyIdentifier: Swift.UInt16
+  public let version: Swift.UInt8
+  public let componentType: Swift.UInt8
+  public let mainFirmwareVersionMajor: Swift.UInt8
+  public let mainFirmwareVersionMinor: Swift.UInt8
+  public let mainFirmwareVersionPatch: Swift.UInt16
+  public let componentHAL: Swift.Int
+  public let batteryStatus: Swift.Bool
+  public let mainConstructionMode: Swift.Bool
+  public let subConstructionMode: Swift.Bool
+  public let isOnline: Swift.Bool
+  public let officeModeEnabled: Swift.Bool
+  public let twoFactorRequired: Swift.Bool
+  public let officeModeActive: Swift.Bool
+  public let reservedBits: Swift.Int?
+  public let identifier: Swift.String
+  public let subFirmwareVersionMajor: Swift.UInt8?
+  public let subFirmwareVersionMinor: Swift.UInt8?
+  public let subFirmwareVersionPatch: Swift.UInt16?
+  public let subComponentIdentifier: Swift.String?
+  public static func == (a: AbrevvaSDK.BleDeviceManufacturerData, b: AbrevvaSDK.BleDeviceManufacturerData) -> Swift.Bool
+}
+public enum ManufacturerDataError : Swift.Error {
+  case NoAdvertisementData
+  case InvalidManufacturerDataLength
+  case ParsingError
+  public static func == (a: AbrevvaSDK.ManufacturerDataError, b: AbrevvaSDK.ManufacturerDataError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public func descriptorValueToString(_ value: Any) -> Swift.String
+public func dataToString(_ data: Foundation.Data) -> Swift.String
+public func stringToData(_ dataString: Swift.String) -> Foundation.Data
+public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+@objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
+  public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AesGcm : ObjectiveC.NSObject {
+  public func decryptFile(key: [Swift.UInt8], data: Foundation.Data, pathPt: Swift.String) -> Swift.Bool
+  public func encryptFile(key: [Swift.UInt8], pathPt: Swift.String, pathCt: Swift.String) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct BleDeviceAdvertisementData {
+  public let rssi: Swift.Int
+  public let isConnectable: Swift.Bool?
+  public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
+}
+@objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
+  public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
+  public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers public class X25519 : ObjectiveC.NSObject {
   public func generateKeyPair() -> [Foundation.Data]
   public func computeSharedSecret(privateKeyData: Foundation.Data, publicKeyData: Foundation.Data) -> Foundation.Data?
@@ -136,11 +143,29 @@ public struct ManufacturerData : Swift.Equatable {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
-  public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
-  public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
+public enum DisengageStatusType : Swift.String {
+  case ERROR
+  case AUTHORIZED
+  case AUTHORIZED_PERMANENT_ENGAGE
+  case AUTHORIZED_PERMANENT_DISENGAGE
+  case AUTHORIZED_BATTERY_LOW
+  case AUTHORIZED_OFFLINE
+  case UNAUTHORIZED
+  case UNAUTHORIZED_OFFLINE
+  case SIGNAL_LOCALIZATION
+  case MEDIUM_DEFECT_ONLINE
+  case MEDIUM_BLACKLISTED
+  case UNKNOWN_STATUS_CODE
+  case UNABLE_TO_CONNECT
+  case TIMEOUT
+  case UNABLE_TO_SET_NOTIFICATIONS
+  case UNABLE_TO_READ_CHALLENGE
+  case ACCESS_CIPHER_ERROR
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 extension Swift.UInt16 {
   public enum UInt16Error : Swift.Error {
@@ -156,6 +181,8 @@ extension Swift.UInt16 {
   public func bitRange(_ indexStart: Swift.Int, _ indexEnd: Swift.Int) throws -> Swift.Int
   public static func combine(_ byte1: Swift.UInt8?, _ byte2: Swift.UInt8?) -> Swift.UInt16
 }
+extension AbrevvaSDK.ManufacturerDataError : Swift.Equatable {}
+extension AbrevvaSDK.ManufacturerDataError : Swift.Hashable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.Hashable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.RawRepresentable {}

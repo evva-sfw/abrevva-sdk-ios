@@ -31,6 +31,9 @@ public enum DisengageStatusType : Swift.String {
   case UNKNOWN_STATUS_CODE
   case UNABLE_TO_CONNECT
   case TIMEOUT
+  case UNABLE_TO_SET_NOTIFICATIONS
+  case UNABLE_TO_READ_CHALLENGE
+  case ACCESS_CIPHER_ERROR
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -53,7 +56,12 @@ public func dataToString(_ data: Foundation.Data) -> Swift.String
 public func stringToData(_ dataString: Swift.String) -> Foundation.Data
 public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-public struct ManufacturerData : Swift.Equatable {
+public struct BleDeviceAdvertisementData {
+  public let rssi: Swift.Int
+  public let isConnectable: Swift.Bool?
+  public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
+}
+public struct BleDeviceManufacturerData : Swift.Equatable {
   public let companyIdentifier: Swift.UInt16
   public let version: Swift.UInt8
   public let componentType: Swift.UInt8
@@ -61,25 +69,43 @@ public struct ManufacturerData : Swift.Equatable {
   public let mainFirmwareVersionMinor: Swift.UInt8
   public let mainFirmwareVersionPatch: Swift.UInt16
   public let componentHAL: Swift.Int
-  public let batteryStatus: Swift.Int
-  public let mainConstructionMode: Swift.Int
-  public let subConstructionMode: Swift.Int
-  public let isOnline: Swift.Int
-  public let officeModeEnabled: Swift.Int
-  public let twoFactorRequired: Swift.Int
-  public let officeModeActive: Swift.Int
+  public let batteryStatus: Swift.Bool
+  public let mainConstructionMode: Swift.Bool
+  public let subConstructionMode: Swift.Bool
+  public let isOnline: Swift.Bool
+  public let officeModeEnabled: Swift.Bool
+  public let twoFactorRequired: Swift.Bool
+  public let officeModeActive: Swift.Bool
   public let reservedBits: Swift.Int?
   public let identifier: Swift.String
   public let subFirmwareVersionMajor: Swift.UInt8?
   public let subFirmwareVersionMinor: Swift.UInt8?
   public let subFirmwareVersionPatch: Swift.UInt16?
   public let subComponentIdentifier: Swift.String?
-  public static func == (a: AbrevvaSDK.ManufacturerData, b: AbrevvaSDK.ManufacturerData) -> Swift.Bool
+  public static func == (a: AbrevvaSDK.BleDeviceManufacturerData, b: AbrevvaSDK.BleDeviceManufacturerData) -> Swift.Bool
+}
+public enum ManufacturerDataError : Swift.Error {
+  case NoAdvertisementData
+  case InvalidManufacturerDataLength
+  case ParsingError
+  public static func == (a: AbrevvaSDK.ManufacturerDataError, b: AbrevvaSDK.ManufacturerDataError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 @objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
   public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
-  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil)
-  public func getManufacturerData() throws -> AbrevvaSDK.ManufacturerData
+  public var address: Swift.String {
+    get
+  }
+  public var localName: Swift.String? {
+    get
+  }
+  public var advertisementData: AbrevvaSDK.BleDeviceAdvertisementData? {
+    get
+  }
+  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil, rssi: Swift.Int)
   public func getName() -> Swift.String?
   public func getAddress() -> Swift.String
   public func getPeripheral() -> CoreBluetooth.CBPeripheral
@@ -159,5 +185,7 @@ extension Swift.UInt16 {
 extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.Hashable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.RawRepresentable {}
+extension AbrevvaSDK.ManufacturerDataError : Swift.Equatable {}
+extension AbrevvaSDK.ManufacturerDataError : Swift.Hashable {}
 extension Swift.UInt16.UInt16Error : Swift.Equatable {}
 extension Swift.UInt16.UInt16Error : Swift.Hashable {}
