@@ -19,17 +19,18 @@ The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA
 
 ## Features
 
-- BLE Scanner for EVVA components in range
-- Localize EVVA components encountered by a scan
-- Disengage EVVA components encountered by a scan
+- BLE Scanner for EVVA components
+- Localize scanned EVVA components
+- Disengage scanned EVVA components
 - Read / Write data via BLE
 
 ## Requirements
 
-| Platform  | Minimum Swift Version | Installation            | Status                   |
-|-----------| --------------------- |-------------------------| ------------------------ |
-| iOS 15.0+ | 5.7.1 / Xcode 14.1    | [CocoaPods](#cocoapods) | Fully Tested             |
-| Android   | see [EVVA Abrevva Android SDK](https://github.com/evva-sfw/abrevva-sdk-android)
+| Platform      | Minimum Swift Version | Installation            | Status                   |
+| ------------- | --------------------- | ----------------------- | ------------------------ |
+| iOS 15.0+     | 5.7.1 / Xcode 14.1    | [CocoaPods](#cocoapods) | Fully Tested             |
+| watchOS 10.0+ | 5.7.1 / Xcode 14.1    | [CocoaPods](#cocoapods) | Fully Tested             |
+| Android       | see [EVVA Abrevva Android SDK](https://github.com/evva-sfw/abrevva-sdk-android)
 
 ## Installation
 
@@ -72,56 +73,103 @@ public class Example {
 Use the BleManager to scan for components in range. You can pass several callback closures to react to the different events when scanning or connecting to components.
 
 ```swift
-func requestLEScan() {
+func scanForDevices() {
     let timeout = 10_000
 
     self.bleManager?.startScan(
-        nil,        // name filter
-        nil,        // name prefix filter
-        false,      // allow duplicates
-        { success in
-            debugPrint("Scan started /w success=\(success)")
-        }, 
         { device, advertisementData, rssi in
             debugPrint("Found device /w address=\(device.getAddress())")
             self.bleDeviceMap[device.getAddress()] = device
         },
-        { address in
-            debugPrint("Connected to device /w address=\(address)")
+        { error in
+            debugPrint("Scan started /w \(error ?? "success")")
         },
-        { address in
-            debugPrint("Disconnected from device /w address=\(address)")
-        },
+        { error in
+            debugPrint("Scan stopped /w \(error ?? "success")")
+        }, 
+        nil,        // mac filter
+        false,      // allow duplicates
         timeout
     )
 }
 ```
 
-### Localize EVVA component
+### Read EVVA component advertisement
 
-With the signalize method you can localize EVVA components. On a successful signalization the component will emit a melody indicating its location.
+Get the EVVA advertisement data from a scanned EVVA component.
 
 ```swift
- func signalize(deviceID: String) async {
+let ad = device.advertisementData
+debugPrint(ad?.rssi)
+debugPrint(ad?.isConnectable)
+
+let md = ad?.manufacturerData
+debugPrint(md?.batteryStatus)
+debugPrint(md?.isOnline)
+debugPrint(md?.officeModeEnabled)
+debugPrint(md?.officeModeActive)
+// ...
+```
+
+There are several properties that can be accessed from the advertisement.
+
+```swift
+public struct BleDeviceAdvertisementData {
+    public let rssi: Int
+    public let isConnectable: Bool?
+    public let manufacturerData: BleDeviceManufacturerData?
+}
+
+public struct BleDeviceManufacturerData {
+    public let companyIdentifier: UInt16
+    public let version: UInt8
+    public let componentType: UInt8
+    public let mainFirmwareVersionMajor: UInt8
+    public let mainFirmwareVersionMinor: UInt8
+    public let mainFirmwareVersionPatch: UInt16
+    public let componentHAL: Int
+    public let batteryStatus: Bool
+    public let mainConstructionMode: Bool
+    public let subConstructionMode: Bool
+    public let isOnline: Bool
+    public let officeModeEnabled: Bool
+    public let twoFactorRequired: Bool
+    public let officeModeActive: Bool
+    public let reservedBits: Int?
+    public let identifier: String
+    public let subFirmwareVersionMajor: UInt8?
+    public let subFirmwareVersionMinor: UInt8?
+    public let subFirmwareVersionPatch: UInt16?
+    public let subComponentIdentifier: String?
+}
+
+```
+
+### Localize EVVA component
+
+With the signalize method you can localize scanned EVVA components. On a successful signalization the component will emit a melody indicating its location.
+
+```swift
+ func signalizeDevice(deviceID: String) async {
     guard let device = self.bleDeviceMap[deviceID] else { return }
 
     let success = await self.bleManager?.signalize(device)
     debugPrint("Signalized /w success=\(success)")
 }
 ```
-### Perform disengage for EVVA components
+### Disengage EVVA components
 
 For the component disengage you have to provide access credentials to the EVVA component. Those are generally acquired in the form of access media metadata from the Xesar software.
 
 ```swift
- func disengage(_ deviceID: String) async {
+ func disengageDevice(_ deviceID: BleDevice) async {
     guard let device = self.bleDeviceMap[deviceID] else { return }
 
-    let mobileId = ""           // hex string
-    let mobileDeviceKey = ""    // hex string
-    let mobileGroupID = ""      // hex string
-    let mobileAccessData = ""   // hex string
-    let isPermanentRelease = false
+    let mobileId = ""               // sha256-hashed hex-encoded version of `xsMobileId` found in blob data.
+    let mobileDeviceKey = ""        // mobileDeviceKey mobile device key string from `xsMOBDK` found in blob data.
+    let mobileGroupID = ""          // mobileGroupId mobile group id string from `xsMOBGID` found in blob data.
+    let mediumAccessData = ""       // mediumAccessData access data string from `mediumDataFrame` found in blob data.
+    let isPermanentRelease = false  // office mode flag.
     let timeout = 10_000
 
     let status = await self.bleManager?.disengage(
@@ -138,8 +186,8 @@ For the component disengage you have to provide access credentials to the EVVA c
 ```
 There are several access status types upon attempting the component disengage.
 ```swift
-public enum DisengageStatusType : String {
-    case ERROR
+public enum DisengageStatusType: String {
+    /// Component
     case AUTHORIZED
     case AUTHORIZED_PERMANENT_ENGAGE
     case AUTHORIZED_PERMANENT_DISENGAGE
@@ -150,8 +198,14 @@ public enum DisengageStatusType : String {
     case SIGNAL_LOCALIZATION
     case MEDIUM_DEFECT_ONLINE
     case MEDIUM_BLACKLISTED
+    case ERROR
+
+    /// Interface
     case UNKNOWN_STATUS_CODE
     case UNABLE_TO_CONNECT
     case TIMEOUT
+    case UNABLE_TO_SET_NOTIFICATIONS
+    case UNABLE_TO_READ_CHALLENGE
+    case ACCESS_CIPHER_ERROR
 }
 ```

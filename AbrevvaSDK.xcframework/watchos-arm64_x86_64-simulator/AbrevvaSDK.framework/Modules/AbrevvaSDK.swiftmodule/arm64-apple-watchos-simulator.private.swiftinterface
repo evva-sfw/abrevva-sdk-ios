@@ -50,15 +50,13 @@ import _SwiftConcurrencyShims
   public func getDevice(_ deviceID: Swift.String) -> AbrevvaSDK.BleDevice?
   public func setCentralManager(_ centralManager: CoreBluetooth.CBCentralManager)
   public func isBleEnabled() -> Swift.Bool
-  @available(*, deprecated, message: "Use startScan with mac signature instead.")
-  public func startScan(_ name: Swift.String?, _ namePrefix: Swift.String?, _ allowDuplicates: Swift.Bool, _ onScanStarted: @escaping (_ success: Swift.Bool) -> Swift.Void, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback, _ onDeviceConnect: AbrevvaSDK.BleManager.ConnectCallback? = nil, _ onDeviceDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil, _ timeout: Swift.Int? = nil)
-  public func startScan(_ mac: Swift.String?, _ timeout: Swift.Int? = nil, _ allowDuplicates: Swift.Bool = false, _ onScanStart: @escaping AbrevvaSDK.BleManager.ScanStartCallback, _ onScanStop: @escaping AbrevvaSDK.BleManager.ScanStopCallback, _ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback)
+  public func startScan(_ onScanResult: @escaping AbrevvaSDK.BleManager.ScanResultCallback, _ onScanStart: AbrevvaSDK.BleManager.ScanStartCallback? = nil, _ onScanStop: AbrevvaSDK.BleManager.ScanStopCallback? = nil, _ macFilter: Swift.String? = nil, _ allowDuplicates: Swift.Bool = false, _ timeout: Swift.Int? = nil)
   public func stopScan()
-  public func connect(_ device: AbrevvaSDK.BleDevice, _ timeout: Swift.Int? = nil, _ onDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil) async -> Swift.Bool
+  public func connect(_ device: AbrevvaSDK.BleDevice, _ onDisconnect: AbrevvaSDK.BleManager.DisconnectCallback? = nil, _ timeout: Swift.Int? = nil) async -> Swift.Bool
   @discardableResult
   public func disconnect(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
   public func signalize(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
-  public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mobileAccessData: Swift.String, _ isPermanentRelease: Swift.Bool, _: Swift.Int? = nil) async -> AbrevvaSDK.DisengageStatusType
+  public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mediumAccessData: Swift.String, _ isPermanentRelease: Swift.Bool, _: Swift.Int? = nil) async -> AbrevvaSDK.DisengageStatusType
   public func registerStateReceiver(_ stateReceiver: @escaping AbrevvaSDK.BleManager.StateReceiverCallback)
   public func unregisterStateReceiver()
   public func emitState(enabled: Swift.Bool)
