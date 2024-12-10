@@ -77,7 +77,7 @@ func scanForDevices() {
     let timeout = 10_000
 
     self.bleManager?.startScan(
-        { device, advertisementData, rssi in
+        { device in
             debugPrint("Found device /w address=\(device.getAddress())")
             self.bleDeviceMap[device.getAddress()] = device
         },

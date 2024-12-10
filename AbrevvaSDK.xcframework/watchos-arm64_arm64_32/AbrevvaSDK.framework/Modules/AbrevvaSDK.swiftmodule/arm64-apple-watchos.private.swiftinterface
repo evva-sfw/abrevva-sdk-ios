@@ -43,7 +43,7 @@ import _SwiftConcurrencyShims
   public typealias StateReceiverCallback = (_ enabled: Swift.Bool) -> Swift.Void
   public typealias ScanStartCallback = (_ error: (any Swift.Error)?) -> Swift.Void
   public typealias ScanStopCallback = (_ error: (any Swift.Error)?) -> Swift.Void
-  public typealias ScanResultCallback = (_ device: AbrevvaSDK.BleDevice, _ advertisementData: [Swift.String : Any], _ rssi: Foundation.NSNumber) -> Swift.Void
+  public typealias ScanResultCallback = (_ device: AbrevvaSDK.BleDevice) -> Swift.Void
   public typealias ConnectCallback = (_ address: Swift.String) -> Swift.Void
   public typealias DisconnectCallback = (_ address: Swift.String) -> Swift.Void
   public init(_ onInit: AbrevvaSDK.BleManager.InitCallback? = nil)
