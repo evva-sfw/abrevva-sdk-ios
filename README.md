@@ -78,8 +78,8 @@ func scanForDevices() {
 
     self.bleManager?.startScan(
         { device in
-            debugPrint("Found device /w address=\(device.getAddress())")
-            self.bleDeviceMap[device.getAddress()] = device
+            debugPrint("Found device /w address=\(device.address)")
+            self.bleDeviceMap[device.address] = device
         },
         { error in
             debugPrint("Scan started /w \(error ?? "success")")
@@ -150,8 +150,8 @@ public struct BleDeviceManufacturerData {
 With the signalize method you can localize scanned EVVA components. On a successful signalization the component will emit a melody indicating its location.
 
 ```swift
- func signalizeDevice(deviceID: String) async {
-    guard let device = self.bleDeviceMap[deviceID] else { return }
+ func signalizeDevice(_ deviceId: String) async {
+    guard let device = self.bleDeviceMap[deviceId] else { return }
 
     let success = await self.bleManager?.signalize(device)
     debugPrint("Signalized /w success=\(success)")
@@ -162,22 +162,22 @@ With the signalize method you can localize scanned EVVA components. On a success
 For the component disengage you have to provide access credentials to the EVVA component. Those are generally acquired in the form of access media metadata from the Xesar software.
 
 ```swift
- func disengageDevice(_ deviceID: BleDevice) async {
-    guard let device = self.bleDeviceMap[deviceID] else { return }
+ func disengageDevice(_ deviceId: String) async {
+    guard let device = self.bleDeviceMap[deviceId] else { return }
 
     let mobileId = ""               // sha256-hashed hex-encoded version of `xsMobileId` found in blob data.
     let mobileDeviceKey = ""        // mobileDeviceKey mobile device key string from `xsMOBDK` found in blob data.
-    let mobileGroupID = ""          // mobileGroupId mobile group id string from `xsMOBGID` found in blob data.
+    let mobileGroupId = ""          // mobileGroupId mobile group id string from `xsMOBGID` found in blob data.
     let mediumAccessData = ""       // mediumAccessData access data string from `mediumDataFrame` found in blob data.
     let isPermanentRelease = false  // office mode flag.
     let timeout = 10_000
 
     let status = await self.bleManager?.disengage(
         device,
-        mobileID,
+        mobileId,
         mobileDeviceKey,
-        mobileGroupID,
-        mobileAccessData,
+        mobileGroupId,
+        mediumAccessData,
         isPermanentRelease,
         timeout
     )
