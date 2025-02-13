@@ -60,6 +60,7 @@ public struct BleDeviceAdvertisementData {
   public let rssi: Swift.Int
   public let isConnectable: Swift.Bool?
   public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
+  public let rawData: [Swift.String : Any]?
 }
 public struct BleDeviceManufacturerData : Swift.Equatable {
   public let companyIdentifier: Swift.UInt16

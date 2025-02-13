@@ -121,6 +121,7 @@ public struct BleDeviceAdvertisementData {
   public let rssi: Swift.Int
   public let isConnectable: Swift.Bool?
   public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
+  public let rawData: [Swift.String : Any]?
 }
 @objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
   public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
