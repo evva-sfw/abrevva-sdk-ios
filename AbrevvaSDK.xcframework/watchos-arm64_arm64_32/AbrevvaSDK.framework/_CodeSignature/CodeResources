@@ -14,43 +14,43 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.abi.json</key>
 		<data>
-		ggT0Lj/MhR16w9+Fjn2mj+qbn8o=
+		DdTAwzT6z7i8pc/hWw2tP8DjF08=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.private.swiftinterface</key>
 		<data>
-		18vyRdSLjZCxrSdNZgqlN3ZNC6o=
+		6cKJW7qtn7U3Zi7MTw7uHVAD3qs=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftdoc</key>
 		<data>
-		P/G1RJ2JAHkLvueJvs119hHVCJU=
+		QvLgsZp3QIucSLwEb2rygSzacKI=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftinterface</key>
 		<data>
-		18vyRdSLjZCxrSdNZgqlN3ZNC6o=
+		6cKJW7qtn7U3Zi7MTw7uHVAD3qs=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftmodule</key>
 		<data>
-		RESfMYGjH3VVv2g3AJldWS4gusc=
+		9ZEbqUUFvvoFJp59EonS4aCG1yI=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.abi.json</key>
 		<data>
-		ggT0Lj/MhR16w9+Fjn2mj+qbn8o=
+		DdTAwzT6z7i8pc/hWw2tP8DjF08=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.private.swiftinterface</key>
 		<data>
-		scP+OvADaSV970PpWEmiYKN/YKQ=
+		eKG2FNZutubvu/IxLGXArM1ODAM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftdoc</key>
 		<data>
-		5d4WEeb+um+wGQN+ePm6UI8Y5Kk=
+		fnU9SMXIBtzHs7TCRVml4/LVFtY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftinterface</key>
 		<data>
-		scP+OvADaSV970PpWEmiYKN/YKQ=
+		eKG2FNZutubvu/IxLGXArM1ODAM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftmodule</key>
 		<data>
-		46LGFGmvgdl0wWUbl/OU4yUYNbk=
+		30CrxujNLcda32Gioprx1Vikmgk=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,110 +70,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ggT0Lj/MhR16w9+Fjn2mj+qbn8o=
+			DdTAwzT6z7i8pc/hWw2tP8DjF08=
 			</data>
 			<key>hash2</key>
 			<data>
-			D3Q46NGKth5pxyF5r9XfHblYESoaK6eHR+7wAT08Ps0=
+			gJV0ZJ487TA0e4wapn6YHIZflQEh1VwWavf/AMMdtZM=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			18vyRdSLjZCxrSdNZgqlN3ZNC6o=
+			6cKJW7qtn7U3Zi7MTw7uHVAD3qs=
 			</data>
 			<key>hash2</key>
 			<data>
-			+y46idhF/TIpla6fYfGdedW0r4/BN5ayuHh116FPPcc=
+			b6SffcU867gGQZSS6IOGfm4UcyIzGaa+weMtKIB/0TQ=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			P/G1RJ2JAHkLvueJvs119hHVCJU=
+			QvLgsZp3QIucSLwEb2rygSzacKI=
 			</data>
 			<key>hash2</key>
 			<data>
-			hq5KxutvxgT9ed4U8sl2FLlRfeTRPO9JLLqhS6eW+B8=
+			XB5ZLESbunZ+XMw1kIgziO8isLq5l67+TRIKdVzPYDM=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			18vyRdSLjZCxrSdNZgqlN3ZNC6o=
+			6cKJW7qtn7U3Zi7MTw7uHVAD3qs=
 			</data>
 			<key>hash2</key>
 			<data>
-			+y46idhF/TIpla6fYfGdedW0r4/BN5ayuHh116FPPcc=
+			b6SffcU867gGQZSS6IOGfm4UcyIzGaa+weMtKIB/0TQ=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RESfMYGjH3VVv2g3AJldWS4gusc=
+			9ZEbqUUFvvoFJp59EonS4aCG1yI=
 			</data>
 			<key>hash2</key>
 			<data>
-			qxaNvpQEoTyxOYhsc7bySBmDCGX63oR7GLKALxH6+ms=
+			fSqrzOtY5RWA2uZI8TQiOKVX3Sg7r0cKwqykxIvKqao=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ggT0Lj/MhR16w9+Fjn2mj+qbn8o=
+			DdTAwzT6z7i8pc/hWw2tP8DjF08=
 			</data>
 			<key>hash2</key>
 			<data>
-			D3Q46NGKth5pxyF5r9XfHblYESoaK6eHR+7wAT08Ps0=
+			gJV0ZJ487TA0e4wapn6YHIZflQEh1VwWavf/AMMdtZM=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			scP+OvADaSV970PpWEmiYKN/YKQ=
+			eKG2FNZutubvu/IxLGXArM1ODAM=
 			</data>
 			<key>hash2</key>
 			<data>
-			5I24QyxePKbAcNULHxgMFo3LKqebG3glzrnw/k648BQ=
+			NyliQyh/iXNJiz0qOEnzFK1tZxR8Z+gQw7LVp1PvTz8=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5d4WEeb+um+wGQN+ePm6UI8Y5Kk=
+			fnU9SMXIBtzHs7TCRVml4/LVFtY=
 			</data>
 			<key>hash2</key>
 			<data>
-			2ODpNhoXIBLjT4eRgxDHZGPflHFU4aXnIHM9Xy0R9UU=
+			rs1goUyy/E9EnfQrtj0B70On/91pnfSrcje2RkCsvyw=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			scP+OvADaSV970PpWEmiYKN/YKQ=
+			eKG2FNZutubvu/IxLGXArM1ODAM=
 			</data>
 			<key>hash2</key>
 			<data>
-			5I24QyxePKbAcNULHxgMFo3LKqebG3glzrnw/k648BQ=
+			NyliQyh/iXNJiz0qOEnzFK1tZxR8Z+gQw7LVp1PvTz8=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64_32-apple-watchos.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			46LGFGmvgdl0wWUbl/OU4yUYNbk=
+			30CrxujNLcda32Gioprx1Vikmgk=
 			</data>
 			<key>hash2</key>
 			<data>
-			4JooSmVl1/kjZWffX2vzY5bIU2pR4/NhLY2RNw2lIso=
+			tjI6ZxPh08Maj1C7cKUi/qbLV8v4MveJWuLX1dm6GQk=
 			</data>
 		</dict>
 	</dict>

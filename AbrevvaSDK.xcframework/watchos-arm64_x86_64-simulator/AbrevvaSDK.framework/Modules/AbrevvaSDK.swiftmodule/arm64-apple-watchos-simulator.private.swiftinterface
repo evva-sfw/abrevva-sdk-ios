@@ -56,7 +56,7 @@ import _SwiftConcurrencyShims
   @discardableResult
   public func disconnect(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
   public func signalize(_ device: AbrevvaSDK.BleDevice) async -> Swift.Bool
-  public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mediumAccessData: Swift.String, _ isPermanentRelease: Swift.Bool, _: Swift.Int? = nil) async -> AbrevvaSDK.DisengageStatusType
+  public func disengage(_ device: AbrevvaSDK.BleDevice, _ mobileID: Swift.String, _ mobileDeviceKey: Swift.String, _ mobileGroupID: Swift.String, _ mediumAccessData: Swift.String, _ isPermanentRelease: Swift.Bool) async -> AbrevvaSDK.DisengageStatusType
   public func registerStateReceiver(_ stateReceiver: @escaping AbrevvaSDK.BleManager.StateReceiverCallback)
   public func unregisterStateReceiver()
   public func emitState(enabled: Swift.Bool)
