@@ -57,12 +57,14 @@ public func stringToData(_ dataString: Swift.String) -> Foundation.Data
 public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public struct BleDeviceAdvertisementData {
+  public init(rssi: Swift.Int, isConnectable: Swift.Bool? = nil, manufacturerData: AbrevvaSDK.BleDeviceManufacturerData? = nil, rawData: [Swift.String : Any]? = nil)
   public let rssi: Swift.Int
   public let isConnectable: Swift.Bool?
   public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
   public let rawData: [Swift.String : Any]?
 }
 public struct BleDeviceManufacturerData : Swift.Equatable {
+  public init(companyIdentifier: Swift.UInt16, version: Swift.UInt8, componentType: Swift.UInt8, mainFirmwareVersionMajor: Swift.UInt8, mainFirmwareVersionMinor: Swift.UInt8, mainFirmwareVersionPatch: Swift.UInt16, componentHAL: Swift.Int, batteryStatus: Swift.Bool, mainConstructionMode: Swift.Bool, subConstructionMode: Swift.Bool, isOnline: Swift.Bool, officeModeEnabled: Swift.Bool, twoFactorRequired: Swift.Bool, officeModeActive: Swift.Bool, reservedBits: Swift.Int?, identifier: Swift.String, subFirmwareVersionMajor: Swift.UInt8?, subFirmwareVersionMinor: Swift.UInt8?, subFirmwareVersionPatch: Swift.UInt16?, subComponentIdentifier: Swift.String?)
   public let companyIdentifier: Swift.UInt16
   public let version: Swift.UInt8
   public let componentType: Swift.UInt8
