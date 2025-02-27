@@ -14,11 +14,11 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.abi.json</key>
 		<data>
-		L5uP4KW4eqmBmItljkdRh1fNbGs=
+		TC/Un+JLTtGg6nihpxl8mSFXrHM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		FUBN3WF7R1LJE1WIxE58DmNsWDQ=
+		NbdK+ja0tkYC9i23c1AH+1hHcLg=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
 		<data>
@@ -26,19 +26,19 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		FUBN3WF7R1LJE1WIxE58DmNsWDQ=
+		NbdK+ja0tkYC9i23c1AH+1hHcLg=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		xmoGp1C4UvPxcIOUK6ke1FWiKto=
+		OZf3NxBLQyDF7XoW+ewDOk3+lvk=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
 		<data>
-		L5uP4KW4eqmBmItljkdRh1fNbGs=
+		TC/Un+JLTtGg6nihpxl8mSFXrHM=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.private.swiftinterface</key>
 		<data>
-		62zbE5nVyF0k1y/Tou7eBp5OXZ8=
+		DiPFyTMddUMQ3XliVFUHGf5cuxY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftinterface</key>
 		<data>
-		62zbE5nVyF0k1y/Tou7eBp5OXZ8=
+		DiPFyTMddUMQ3XliVFUHGf5cuxY=
 		</data>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<data>
-		EMHQAUQLahrf0EAHdMfLVRmLNgQ=
+		INGcZtggwimeENCDdIgBDA8aD7M=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -66,14 +66,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			K1Xa0f6TE53m/780v6HzDOWr8DxA74s6SkdM6TaFYYE=
+			XM59n+qUp69lP7WP5XBamuIQSMItmOXGwmhecN3rNXw=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dsImTXkGTF6W9gg2ksa6Bxx++XTiwX1776uz7XLuhyc=
+			O1jcQre7eRbaqAlSuIjQuyjKbwW17PDcSJF0xutAODg=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftdoc</key>
@@ -87,28 +87,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dsImTXkGTF6W9gg2ksa6Bxx++XTiwX1776uz7XLuhyc=
+			O1jcQre7eRbaqAlSuIjQuyjKbwW17PDcSJF0xutAODg=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/arm64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XcL7E+10TJX8MaTjGrXg0VoT+A33GUvcmAdUHKmnZkA=
+			5TQjI9MlDEDE60cLdDxPUq5O7lR0honBGMgKW/ERq88=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K1Xa0f6TE53m/780v6HzDOWr8DxA74s6SkdM6TaFYYE=
+			XM59n+qUp69lP7WP5XBamuIQSMItmOXGwmhecN3rNXw=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SsoYOnouZDsFhKHDenkW7d9KyYM8DFxfg/dt3T689X0=
+			OnRk7YAuQMjUhsKxiLQAvw7Dz54fSnHpfKo0Rfc0Nug=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftdoc</key>
@@ -122,14 +122,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SsoYOnouZDsFhKHDenkW7d9KyYM8DFxfg/dt3T689X0=
+			OnRk7YAuQMjUhsKxiLQAvw7Dz54fSnHpfKo0Rfc0Nug=
 			</data>
 		</dict>
 		<key>Modules/AbrevvaSDK.swiftmodule/x86_64-apple-watchos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			siE9hK4jOl3TQCoBujllmrx6GloWo6va2I5jEZT7iTU=
+			GElNKTne8CQKvCOMALpogA6sTShG/yKCu0SPkW/xlRo=
 			</data>
 		</dict>
 	</dict>

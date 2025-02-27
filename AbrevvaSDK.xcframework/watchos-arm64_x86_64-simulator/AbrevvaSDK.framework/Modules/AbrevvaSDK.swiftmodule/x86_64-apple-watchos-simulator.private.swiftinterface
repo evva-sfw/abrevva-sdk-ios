@@ -67,6 +67,42 @@ import _SwiftConcurrencyShims
   @objc public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
   @objc deinit
 }
+public func descriptorValueToString(_ value: Any) -> Swift.String
+public func dataToString(_ data: Foundation.Data) -> Swift.String
+public func stringToData(_ dataString: Swift.String) -> Foundation.Data
+public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
+@objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
+  public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AesGcm : ObjectiveC.NSObject {
+  public func decryptFile(key: [Swift.UInt8], data: Foundation.Data, pathPt: Swift.String) -> Swift.Bool
+  public func encryptFile(key: [Swift.UInt8], pathPt: Swift.String, pathCt: Swift.String) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
+  public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
+  public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class X25519 : ObjectiveC.NSObject {
+  public func generateKeyPair() -> [Foundation.Data]
+  public func computeSharedSecret(privateKeyData: Foundation.Data, publicKeyData: Foundation.Data) -> Foundation.Data?
+  public func computeED25519PublicKey(privateKeyData: Foundation.Data) -> Foundation.Data?
+  public func sign(privateKeyData: Foundation.Data, data: Foundation.Data) -> Foundation.Data?
+  public func verify(publicKeyData: Foundation.Data, data: Foundation.Data, signature: Foundation.Data) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
 public struct BleDeviceManufacturerData : Swift.Equatable {
   public init(companyIdentifier: Swift.UInt16, version: Swift.UInt8, componentType: Swift.UInt8, mainFirmwareVersionMajor: Swift.UInt8, mainFirmwareVersionMinor: Swift.UInt8, mainFirmwareVersionPatch: Swift.UInt16, componentHAL: Swift.Int, batteryStatus: Swift.Bool, mainConstructionMode: Swift.Bool, subConstructionMode: Swift.Bool, isOnline: Swift.Bool, officeModeEnabled: Swift.Bool, twoFactorRequired: Swift.Bool, officeModeActive: Swift.Bool, reservedBits: Swift.Int?, identifier: Swift.String, subFirmwareVersionMajor: Swift.UInt8?, subFirmwareVersionMinor: Swift.UInt8?, subFirmwareVersionPatch: Swift.UInt16?, subComponentIdentifier: Swift.String?)
   public let companyIdentifier: Swift.UInt16
@@ -101,48 +137,12 @@ public enum ManufacturerDataError : Swift.Error {
     get
   }
 }
-public func descriptorValueToString(_ value: Any) -> Swift.String
-public func dataToString(_ data: Foundation.Data) -> Swift.String
-public func stringToData(_ dataString: Swift.String) -> Foundation.Data
-public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-@objc @_inheritsConvenienceInitializers public class AesCcm : ObjectiveC.NSObject {
-  public func encrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], pt: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
-  public func decrypt(key: [Swift.UInt8], iv: [Swift.UInt8], adata: [Swift.UInt8], ct: [Swift.UInt8], tagLength: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class AesGcm : ObjectiveC.NSObject {
-  public func decryptFile(key: [Swift.UInt8], data: Foundation.Data, pathPt: Swift.String) -> Swift.Bool
-  public func encryptFile(key: [Swift.UInt8], pathPt: Swift.String, pathCt: Swift.String) -> Swift.Bool
-  @objc override dynamic public init()
-  @objc deinit
-}
 public struct BleDeviceAdvertisementData {
   public init(rssi: Swift.Int, isConnectable: Swift.Bool? = nil, manufacturerData: AbrevvaSDK.BleDeviceManufacturerData? = nil, rawData: [Swift.String : Any]? = nil)
   public let rssi: Swift.Int
   public let isConnectable: Swift.Bool?
   public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
   public let rawData: [Swift.String : Any]?
-}
-@objc @_inheritsConvenienceInitializers public class HKDFWrapper : ObjectiveC.NSObject {
-  public func derive(key: [Swift.UInt8], salt: [Swift.UInt8], info: [Swift.UInt8], length: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class SimpleSecureRandom : ObjectiveC.NSObject {
-  public func random(_ numBytes: Swift.Int) -> [Swift.UInt8]
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class X25519 : ObjectiveC.NSObject {
-  public func generateKeyPair() -> [Foundation.Data]
-  public func computeSharedSecret(privateKeyData: Foundation.Data, publicKeyData: Foundation.Data) -> Foundation.Data?
-  public func computeED25519PublicKey(privateKeyData: Foundation.Data) -> Foundation.Data?
-  public func sign(privateKeyData: Foundation.Data, data: Foundation.Data) -> Foundation.Data?
-  public func verify(publicKeyData: Foundation.Data, data: Foundation.Data, signature: Foundation.Data) -> Swift.Bool
-  @objc override dynamic public init()
-  @objc deinit
 }
 public enum DisengageStatusType : Swift.String {
   case ERROR

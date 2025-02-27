@@ -2,7 +2,9 @@
 // swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
 // swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature AccessLevelOnImport -enable-bare-slash-regex -module-name AbrevvaSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import CocoaMQTT
 import CoreBluetooth
+import CoreNFC
 import CryptoKit
 import Foundation
 import Security
@@ -56,12 +58,59 @@ public func dataToString(_ data: Foundation.Data) -> Swift.String
 public func stringToData(_ dataString: Swift.String) -> Foundation.Data
 public func CBUUIDToString(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
 public func CBUUIDToStringUppercase(_ uuid: CoreBluetooth.CBUUID) -> Swift.String
-public struct BleDeviceAdvertisementData {
-  public init(rssi: Swift.Int, isConnectable: Swift.Bool? = nil, manufacturerData: AbrevvaSDK.BleDeviceManufacturerData? = nil, rawData: [Swift.String : Any]? = nil)
-  public let rssi: Swift.Int
-  public let isConnectable: Swift.Bool?
-  public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
-  public let rawData: [Swift.String : Any]?
+@objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
+  public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
+  public var address: Swift.String {
+    get
+  }
+  public var localName: Swift.String? {
+    get
+  }
+  public var advertisementData: AbrevvaSDK.BleDeviceAdvertisementData? {
+    get
+  }
+  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil, rssi: Swift.Int)
+  public func getName() -> Swift.String?
+  public func getAddress() -> Swift.String
+  public func getPeripheral() -> CoreBluetooth.CBPeripheral
+  public func isConnected() -> Swift.Bool
+  public func discoverServices(_ timeout: Swift.Int? = nil) async -> Swift.Bool
+  public func read(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ timeout: Swift.Int? = nil) async -> Foundation.Data?
+  public func write(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ data: Foundation.Data, _ writeType: CoreBluetooth.CBCharacteristicWriteType, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  public func setNotifications(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ enable: Swift.Bool, _ notifyCallback: AbrevvaSDK.BleDevice.NotifyCallback?, _ timeout: Swift.Int? = nil) async -> Swift.Bool
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error _: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didDiscoverDescriptorsFor characteristic: CoreBluetooth.CBCharacteristic, error _: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didWriteValueFor _: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc deinit
+}
+public protocol MqttConnectionOptions {
+  var clientID: Swift.String { get }
+  var host: Swift.String { get }
+  var port: Swift.UInt16 { get }
+}
+public struct MqttConnectionOptionsTLS : AbrevvaSDK.MqttConnectionOptions {
+  public init(clientID: Swift.String, host: Swift.String, port: Swift.UInt16, certificate: CoreFoundation.CFArray)
+  public var clientID: Swift.String
+  public var host: Swift.String
+  public var port: Swift.UInt16
+  public var certificate: CoreFoundation.CFArray
+}
+public struct MqttConnectionOptionsJWT : AbrevvaSDK.MqttConnectionOptions {
+  public init(clientID: Swift.String, host: Swift.String, port: Swift.UInt16, username: Swift.String, password: Swift.String)
+  public var clientID: Swift.String
+  public var host: Swift.String
+  public var port: Swift.UInt16
+  public var username: Swift.String
+  public var password: Swift.String
+}
+public class Message : Swift.Codable {
+  public init(t: Swift.String, e: Swift.String, oid: Swift.String, atr: Swift.String? = nil, mt: Swift.String? = nil)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public struct BleDeviceManufacturerData : Swift.Equatable {
   public init(companyIdentifier: Swift.UInt16, version: Swift.UInt8, componentType: Swift.UInt8, mainFirmwareVersionMajor: Swift.UInt8, mainFirmwareVersionMinor: Swift.UInt8, mainFirmwareVersionPatch: Swift.UInt16, componentHAL: Swift.Int, batteryStatus: Swift.Bool, mainConstructionMode: Swift.Bool, subConstructionMode: Swift.Bool, isOnline: Swift.Bool, officeModeEnabled: Swift.Bool, twoFactorRequired: Swift.Bool, officeModeActive: Swift.Bool, reservedBits: Swift.Int?, identifier: Swift.String, subFirmwareVersionMajor: Swift.UInt8?, subFirmwareVersionMinor: Swift.UInt8?, subFirmwareVersionPatch: Swift.UInt16?, subComponentIdentifier: Swift.String?)
@@ -97,32 +146,30 @@ public enum ManufacturerDataError : Swift.Error {
     get
   }
 }
-@objc public class BleDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
-  public typealias NotifyCallback = (_ value: Foundation.Data?) -> Swift.Void
-  public var address: Swift.String {
+public struct BleDeviceAdvertisementData {
+  public init(rssi: Swift.Int, isConnectable: Swift.Bool? = nil, manufacturerData: AbrevvaSDK.BleDeviceManufacturerData? = nil, rawData: [Swift.String : Any]? = nil)
+  public let rssi: Swift.Int
+  public let isConnectable: Swift.Bool?
+  public let manufacturerData: AbrevvaSDK.BleDeviceManufacturerData?
+  public let rawData: [Swift.String : Any]?
+}
+public enum CodingStationError : Swift.Error {
+  case MQTT_INVALID_OPTIONS
+  case MQTT_CONNECTING_INTERRUPTED
+  case MQTT_ALREADY_CONNECTED
+  case MQTT_NOT_CONNECTED
+  public static func == (a: AbrevvaSDK.CodingStationError, b: AbrevvaSDK.CodingStationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
-  public var localName: Swift.String? {
-    get
-  }
-  public var advertisementData: AbrevvaSDK.BleDeviceAdvertisementData? {
-    get
-  }
-  public init(_ peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any]? = nil, rssi: Swift.Int)
-  public func getName() -> Swift.String?
-  public func getAddress() -> Swift.String
-  public func getPeripheral() -> CoreBluetooth.CBPeripheral
-  public func isConnected() -> Swift.Bool
-  public func discoverServices(_ timeout: Swift.Int? = nil) async -> Swift.Bool
-  public func read(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ timeout: Swift.Int? = nil) async -> Foundation.Data?
-  public func write(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ data: Foundation.Data, _ writeType: CoreBluetooth.CBCharacteristicWriteType, _ timeout: Swift.Int? = nil) async -> Swift.Bool
-  public func setNotifications(_ serviceUUID: CoreBluetooth.CBUUID, _ characteristicUUID: CoreBluetooth.CBUUID, _ enable: Swift.Bool, _ notifyCallback: AbrevvaSDK.BleDevice.NotifyCallback?, _ timeout: Swift.Int? = nil) async -> Swift.Bool
-  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
-  @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error _: (any Swift.Error)?)
-  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didDiscoverDescriptorsFor characteristic: CoreBluetooth.CBCharacteristic, error _: (any Swift.Error)?)
-  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didWriteValueFor _: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc public func peripheral(_: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+}
+@available(iOS 15, *)
+public class CodingStation {
+  public init()
+  public func connect(_ mqttConnectionOptions: any AbrevvaSDK.MqttConnectionOptions) async throws
+  public func disconnect()
+  public func write() async throws
   @objc deinit
 }
 @objc public class BleManager : ObjectiveC.NSObject, CoreBluetooth.CBCentralManagerDelegate {
@@ -183,10 +230,17 @@ extension Swift.UInt16 {
   public func bitRange(_ indexStart: Swift.Int, _ indexEnd: Swift.Int) throws -> Swift.Int
   public static func combine(_ byte1: Swift.UInt8?, _ byte2: Swift.UInt8?) -> Swift.UInt16
 }
+@_hasMissingDesignatedInitializers @available(iOS 15.0, *)
+public class AuthManager {
+  public static func getMqttConfigForXS(url: Foundation.URL, clientId: Swift.String, username: Swift.String, password: Swift.String) async throws -> AbrevvaSDK.MqttConnectionOptionsTLS?
+  @objc deinit
+}
 extension AbrevvaSDK.DisengageStatusType : Swift.Equatable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.Hashable {}
 extension AbrevvaSDK.DisengageStatusType : Swift.RawRepresentable {}
 extension AbrevvaSDK.ManufacturerDataError : Swift.Equatable {}
 extension AbrevvaSDK.ManufacturerDataError : Swift.Hashable {}
+extension AbrevvaSDK.CodingStationError : Swift.Equatable {}
+extension AbrevvaSDK.CodingStationError : Swift.Hashable {}
 extension Swift.UInt16.UInt16Error : Swift.Equatable {}
 extension Swift.UInt16.UInt16Error : Swift.Hashable {}
