@@ -209,3 +209,26 @@ public enum DisengageStatusType: String {
     case ACCESS_CIPHER_ERROR
 }
 ```
+### Coding Identification Media
+Use the CodingStation to write or update access data onto an EVVA identification medium.
+
+```swift
+class ExampleClass {
+    private let cs = CodingStation()
+
+    private let url = URL(string: "")!
+    private let clientId = ""
+    private let username = ""
+    private let password = ""
+
+    public func writeMedium() async throws {
+        let cf: MqttConnectionOptions?
+        
+        cf = try await AuthManager.getMqttConfigForXS(
+            url: url, clientId: clientId, username: username, password: password)
+        try await cs.connect(cf!)
+        try await cs.write()
+        cs.disconnect()
+    }
+}
+```
