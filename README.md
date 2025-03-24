@@ -44,7 +44,7 @@ pod 'AbrevvaSDK'
 
 ### Swift Package Manager
 
-See [swiftpackageindex.com](https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios-pod)
+See [swiftpackageindex.com](https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios)
 
 ## Examples
 
