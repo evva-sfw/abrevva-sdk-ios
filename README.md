@@ -1,16 +1,14 @@
 <p align="center">
-  <h1 align="center">EVVA Abrevva iOS SDK</h1>
+  <h1 align="center">EVVA Abrevva SDK for Apple Platforms</h1>
 </p>
 
 <p align="center">
-  <a href="https://github.com/evva-sfw/abrevva-sdk-ios-pod"><img src="https://img.shields.io/github/v/tag/evva-sfw/abrevva-sdk-ios-pod?color=fce500" alt="Package managers"></a>
-  <a href="https://cocoapods.org/pods/AbrevvaSDK"><img src="https://img.shields.io/badge/-CocoaPods-fce500?logo=CocoaPods" alt="Package managers"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-EVVA_License-yellow.svg?color=fce500&logo=data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgNjQwIDEwMjQiPgo8ZyBpZD0iaWNvbW9vbi1pZ25vcmUiPgo8L2c+CjxwYXRoIGZpbGw9IiNmY2U1MDAiIGQ9Ik02MjIuNDIzIDUxMS40NDhsLTMzMS43NDYtNDY0LjU1MmgtMjg4LjE1N2wzMjkuODI1IDQ2NC41NTItMzI5LjgyNSA0NjYuNjY0aDI3NS42MTJ6Ij48L3BhdGg+Cjwvc3ZnPgo=" alt="EVVA License"></a>
-    <a href="https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fevva-sfw%2Fabrevva-sdk-ios%2Fbadge%3Ftype%3Dplatforms" alt="Package managers" notes="https://swiftpackageindex.com/api/packages/daveverwer/LeftPad/badge?type=platforms"></a>
-    <a href="https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fevva-sfw%2Fabrevva-sdk-ios%2Fbadge%3Ftype%3Dswift-versions" alt="Package managers"></a>
+    <a href="https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fevva-sfw%2Fabrevva-sdk-ios%2Fbadge%3Ftype%3Dplatforms" alt="Supported platforms"></a>
+    <a href="https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fevva-sfw%2Fabrevva-sdk-ios%2Fbadge%3Ftype%3Dswift-versions" alt="Supported Swift versions"></a>
 </p>
 
-The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA access components. It allows for scanning and connecting via BLE.
+The EVVA Abrevva SDK provides tools for working with EVVA access components on Apple platforms, including scanning for and communicating with components over Bluetooth Low Energy (BLE).
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -19,226 +17,180 @@ The EVVA Abrevva iOS SDK is a collection of tools to work with electronical EVVA
 
 ## Features
 
-- BLE Scanner for EVVA components
-- Localize scanned EVVA components
-- Disengage scanned EVVA components
-- Read / Write data via BLE
+- Scan for EVVA components over BLE.
+- Localize scanned components.
+- Disengage scanned components.
+- Read and write data over BLE.
+- Write or update access data on EVVA identification media with a coding station.
 
 ## Requirements
 
-| Platform | Version | Xcode | Swift | Status                   |
-|----------|---------|-------|-------| ------------------------ |
-| iOS      | 16.0+   | 15.3+ | 5.10+ | Fully Tested             |
-| watchOS  | 10.0+   | 15.3+ | 5.10+ | Fully Tested             |
+| Platform | Minimum version |
+|----------|-----------------|
+| iOS      | 16.0+           |
+| watchOS  | 10.0+           |
+
+The SDK is built with Swift 6. The `CodingStation` API used in the identification-media example is iOS-only.
 
 ## Installation
 
-### Cocoapods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate EVVA Abrevva iOS SDK into your Xcode project using CocoaPods, specify the pod in your `Podfile` and add a `post_install` hook to resolve a nasty [CocoaPods limitation with XCFrameworks](https://github.com/CocoaPods/CocoaPods/issues/11079).  
-
-```ruby
-target 'App' do
-  pod 'AbrevvaSDK'
-end    
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-    end
-  end   
-end
-
-```
-
 ### Swift Package Manager
 
-See [swiftpackageindex.com](https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios)
+Swift Package Manager is the sole supported distribution method. In Xcode, choose **File > Add Package Dependencies…** and enter:
+
+```text
+https://github.com/evva-sfw/abrevva-sdk-ios.git
+```
+
+Add the `AbrevvaSDK` product to iOS app targets or `AbrevvaSDKWatchOS` to watchOS app targets. The released package supports iOS 16 and later and watchOS 10 and later, and supplies the dependency modules required by each product.
+
+For a Swift package manifest, add the released package and the product matching the app target:
+
+```swift
+.package(url: "https://github.com/evva-sfw/abrevva-sdk-ios.git", from: "4.0.0")
+
+// iOS target dependency:
+.product(name: "AbrevvaSDK", package: "abrevva-sdk-ios")
+
+// watchOS target dependency:
+.product(name: "AbrevvaSDKWatchOS", package: "abrevva-sdk-ios")
+```
+
+See the [Swift Package Index listing](https://swiftpackageindex.com/evva-sfw/abrevva-sdk-ios) and [GitHub releases](https://github.com/evva-sfw/abrevva-sdk-ios/releases) for package and release information.
 
 ## Examples
 
-### Initialize BleManager
+The BLE manager and devices are `MainActor`-isolated. Call their APIs from the main actor, as in the examples below.
 
-To start off first initialize the SDK BleManager. You can pass an init callback closure for success indication.
+### Initialize `BleManager`
+
+Create a manager to scan for and connect to EVVA components. The optional callback reports Bluetooth initialization state.
 
 ```swift
 import AbrevvaSDK
 
-public class Example {
-
-    private var bleManager: BleManager?
-    private var bleDeviceMap = [String: BleDevice]()
-
-    func initialize() {
-        self.bleManager = BleManager { success, message in
-            debugPrint("BleManager initialized /w success=\(success)")
-        }
+@MainActor
+final class Example {
+    private let bleManager = BleManager { success, message in
+        debugPrint("BleManager initialized: success=\(success), message=\(message ?? "none")")
     }
+
+    private var bleDeviceMap = [String: BleDevice]()
 }
 ```
 
 ### Scan for EVVA components
 
-Use the BleManager to scan for components in range. You can pass several callback closures to react to the different events when scanning or connecting to components.
+`startScan` accepts callbacks for results and scan start/stop, an optional manufacturer identifier filter, a duplicate-results setting, and an optional timeout in milliseconds. A manager supports one active scan at a time. For each accepted result, the manager reuses the same `BleDevice` instance for that peripheral and refreshes its latest advertisement data.
 
 ```swift
-func scanForDevices() {
-    let timeout = 10_000
-
-    self.bleManager?.startScan(
-        { device in
-            debugPrint("Found device /w address=\(device.address)")
-            self.bleDeviceMap[device.address] = device
-        },
-        { error in
-            debugPrint("Scan started /w \(error ?? "success")")
-        },
-        { error in
-            debugPrint("Scan stopped /w \(error ?? "success")")
-        }, 
-        nil,        // mac filter
-        false,      // allow duplicates
-        timeout
-    )
+extension Example {
+    func scanForDevices() {
+        bleManager.startScan(
+            { device in
+                debugPrint("Found device at \(device.address)")
+                bleDeviceMap[device.address] = device
+            },
+            { error in
+                debugPrint("Scan start: \(error?.localizedDescription ?? "success")")
+            },
+            { error in
+                debugPrint("Scan stop: \(error?.localizedDescription ?? "success")")
+            },
+            nil,        // Optional manufacturer identifier filter.
+            false,      // Allow duplicate results.
+            10_000      // Stop after 10 seconds.
+        )
+    }
 }
 ```
 
 ### Read EVVA component advertisement
 
-Get the EVVA advertisement data from a scanned EVVA component.
+A scanned device exposes its latest received signal strength and parsed manufacturer data through `advertisementData`.
 
 ```swift
-let ad = device.advertisementData
-debugPrint(ad?.rssi)
-debugPrint(ad?.isConnectable)
+let advertisement = device.advertisementData
+print(advertisement?.rssi as Any)
+print(advertisement?.isConnectable as Any)
 
-let md = ad?.manufacturerData
-debugPrint(md?.batteryStatus)
-debugPrint(md?.isOnline)
-debugPrint(md?.officeModeEnabled)
-debugPrint(md?.officeModeActive)
-// ...
+let manufacturerData = advertisement?.manufacturerData
+print(manufacturerData?.batteryStatus as Any)
+print(manufacturerData?.isOnline as Any)
+print(manufacturerData?.officeModeEnabled as Any)
+print(manufacturerData?.officeModeActive as Any)
 ```
 
-There are several properties that can be accessed from the advertisement.
+`BleDeviceAdvertisementData` provides `rssi`, `isConnectable`, and optional `manufacturerData`. `BleDeviceManufacturerData` includes the company identifier, component and firmware versions, battery and online state, office-mode flags, identifier, and optional subcomponent fields.
+
+### Localize an EVVA component
+
+`signalize` connects to the scanned device and asks it to emit a melody to help locate it. It returns `false` if the operation fails.
 
 ```swift
-public struct BleDeviceAdvertisementData {
-    public let rssi: Int
-    public let isConnectable: Bool?
-    public let manufacturerData: BleDeviceManufacturerData?
-}
-
-public struct BleDeviceManufacturerData {
-    public let companyIdentifier: UInt16
-    public let version: UInt8
-    public let componentType: UInt8
-    public let mainFirmwareVersionMajor: UInt8
-    public let mainFirmwareVersionMinor: UInt8
-    public let mainFirmwareVersionPatch: UInt16
-    public let componentHAL: Int
-    public let batteryStatus: Bool
-    public let mainConstructionMode: Bool
-    public let subConstructionMode: Bool
-    public let isOnline: Bool
-    public let officeModeEnabled: Bool
-    public let twoFactorRequired: Bool
-    public let officeModeActive: Bool
-    public let reservedBits: Int?
-    public let identifier: String
-    public let subFirmwareVersionMajor: UInt8?
-    public let subFirmwareVersionMinor: UInt8?
-    public let subFirmwareVersionPatch: UInt16?
-    public let subComponentIdentifier: String?
-}
-
-```
-
-### Localize EVVA component
-
-With the signalize method you can localize scanned EVVA components. On a successful signalization the component will emit a melody indicating its location.
-
-```swift
- func signalizeDevice(_ deviceId: String) async {
-    guard let device = self.bleDeviceMap[deviceId] else { return }
-
-    let success = await self.bleManager?.signalize(device)
-    debugPrint("Signalized /w success=\(success)")
+extension Example {
+    func signalizeDevice(_ deviceID: String) async {
+        guard let device = bleDeviceMap[deviceID] else { return }
+        let succeeded = await bleManager.signalize(device)
+        debugPrint("Signalized: \(succeeded)")
+    }
 }
 ```
-### Disengage EVVA components
 
-For the component disengage you have to provide access credentials to the EVVA component. Those are generally acquired from the Xesar software.
+### Disengage an EVVA component
 
-> Note: Since 3.4.0 the `mobileID` string can be passed as is, without sha256 hashing the input first.
+Disengagement requires credentials from the relevant Xesar medium data. The current `disengageWithXvnResponse` API accepts the `mobileID` string without pre-hashing it; the SDK hashes it while building the access frame. The legacy `disengage` API is deprecated and expects a SHA-256-hashed, hex-encoded `mobileID`.
 
 ```swift
- func disengageDevice(_ deviceId: String) async {
-    guard let device = self.bleDeviceMap[deviceId] else { return }
+extension Example {
+    func disengageDevice(_ deviceID: String) async {
+        guard let device = bleDeviceMap[deviceID] else { return }
 
-    let mobileId = ""               // `xsMobileId` string from medium blob data
-    let mobileDeviceKey = ""        // `xsMOBDK` string from medium blob data
-    let mobileGroupId = ""          // `xsMOBGID` string from medium blob data
-    let mediumAccessData = ""       // `mediumDataFrame` string from medium blob data
-    let isPermanentRelease = false  // office mode flag
+        let mobileID = ""              // `xsMobileId` from the medium data.
+        let mobileDeviceKey = ""       // `xsMOBDK` from the medium data.
+        let mobileGroupID = ""         // `xsMOBGID` from the medium data.
+        let mediumAccessData = ""      // `mediumDataFrame` from the medium data.
+        let isPermanentRelease = false // Whether to request a permanent release.
 
-    let result = await self.bleManager?.disengageWithXvnResponse(
-        device,
-        mobileId,
-        mobileDeviceKey,
-        mobileGroupId,
-        mediumAccessData,
-        isPermanentRelease,
-    )
-    debugPrint("status=\(result.0) xvnData=\(result.1)")
+        let (status, xvnData) = await bleManager.disengageWithXvnResponse(
+            device,
+            mobileID,
+            mobileDeviceKey,
+            mobileGroupID,
+            mediumAccessData,
+            isPermanentRelease
+        )
+        debugPrint("Status=\(status), XVN data=\(String(describing: xvnData))")
+    }
 }
 ```
-There are several access status types upon attempting the component disengage.
-```swift
-public enum DisengageStatusType: String {
-    /// Component
-    case AUTHORIZED
-    case AUTHORIZED_PERMANENT_ENGAGE
-    case AUTHORIZED_PERMANENT_DISENGAGE
-    case AUTHORIZED_BATTERY_LOW
-    case AUTHORIZED_OFFLINE
-    case UNAUTHORIZED
-    case UNAUTHORIZED_OFFLINE
-    case SIGNAL_LOCALIZATION
-    case MEDIUM_DEFECT_ONLINE
-    case MEDIUM_BLACKLISTED
-    case ERROR
 
-    /// Interface
-    case UNKNOWN_STATUS_CODE
-    case UNABLE_TO_CONNECT
-    case TIMEOUT
-    case UNABLE_TO_SET_NOTIFICATIONS
-    case UNABLE_TO_READ_CHALLENGE
-    case ACCESS_CIPHER_ERROR
-}
-```
-### Coding Identification Media
-Use the CodingStation to write or update access data onto an EVVA identification medium.
+`DisengageStatusType` includes component outcomes such as `AUTHORIZED` and `UNAUTHORIZED`, as well as interface errors such as `UNABLE_TO_CONNECT`, `TIMEOUT`, and `ACCESS_CIPHER_ERROR`. The XVN response is optional and is returned as `Data?`.
+
+### Code an EVVA identification medium
+
+Use `AuthManager` to retrieve coding-station MQTT options, then connect a `CodingStation` and start an NFC writing session. This example requires a coding-station URL, client ID, and login credentials; provide values for your installation.
 
 ```swift
-class ExampleClass {
-    private let cs = CodingStation()
+import AbrevvaSDK
+import Foundation
 
-    private let url = URL(string: "")!
-    private let clientId = ""
-    private let username = ""
-    private let password = ""
+@MainActor
+final class CodingStationExample {
+    func writeMedium() async throws {
+        guard let url = URL(string: "https://coding-station.example") else { return }
+        guard let options = try await AuthManager.getMqttConfigForXS(
+            url: url,
+            clientId: "<coding-station-id>",
+            username: "<username>",
+            password: "<password>"
+        ) else { return }
 
-    public func writeMedium() async throws {
-        let cf: MqttConnectionOptions?
-        
-        cf = try await AuthManager.getMqttConfigForXS(
-            url: url, clientId: clientId, username: username, password: password)
-        try await cs.connect(cf!)
-        try await cs.write()
-        cs.disconnect()
+        let codingStation = CodingStation()
+        defer { codingStation.disconnect() }
+
+        try await codingStation.connect(options)
+        try await codingStation.write()
     }
 }
 ```

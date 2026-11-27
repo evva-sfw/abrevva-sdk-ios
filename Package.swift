@@ -1,25 +1,42 @@
 // swift-tools-version: 5.10
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
     name: "AbrevvaSDK",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v16),
+        .watchOS(.v10),
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "AbrevvaSDK",
-            targets: ["AbrevvaSDK"]),
+            targets: ["AbrevvaSDK", "IOSDependencies"]
+        ),
+        .library(
+            name: "AbrevvaSDKWatchOS",
+            targets: ["AbrevvaSDK", "WatchOSDependencies"]
+        ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", exact: "1.10.0"),
+        .package(url: "https://github.com/emqx/CocoaMQTT.git", exact: "2.4.1"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .binaryTarget(
-            name: "AbrevvaSDK",
-            path: "AbrevvaSDK.xcframework"
-        )
+        .binaryTarget(name: "AbrevvaSDK", path: "AbrevvaSDK.xcframework"),
+        .target(
+            name: "IOSDependencies",
+            dependencies: [
+                .product(name: "CryptoSwift", package: "CryptoSwift"),
+                .product(name: "CocoaMQTT", package: "CocoaMQTT"),
+            ],
+            path: "Sources/IOSDependencies"
+        ),
+        .target(
+            name: "WatchOSDependencies",
+            dependencies: [
+                .product(name: "CryptoSwift", package: "CryptoSwift"),
+            ],
+            path: "Sources/WatchOSDependencies"
+        ),
     ]
 )
